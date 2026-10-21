@@ -1,0 +1,86 @@
+---
+import "../styles/global.css";
+import { sitio, paginas } from "../data/sitio.js";
+const { titulo, descripcion = "Radar de oportunidades comerciales para Mataró a partir de datos abiertos." } = Astro.props;
+const ruta = Astro.url.pathname.replace(/\/$/, "") || "/";
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{titulo ? `${titulo} · ${sitio.nombre}` : `${sitio.nombre} · Radar comercial de Mataró`}</title>
+    <meta name="description" content={descripcion} />
+    <link rel="icon" href="/assets/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Saltar al contenido</a>
+    <header class="top">
+      <div class="wrap bar">
+        <a class="brand" href="/" aria-label="ConnectMA, inicio">
+          <img src="/assets/icon.png" alt="" width="36" height="36" />
+          <span>Connect<b>MA</b></span>
+        </a>
+        <button class="menu-btn" aria-expanded="false" aria-controls="nav">Menú</button>
+        <nav id="nav" aria-label="Principal">
+          <ul>
+            {paginas.map((p) => (
+              <li><a href={p.href} aria-current={ruta === p.href ? "page" : undefined}>{p.titulo}</a></li>
+            ))}
+          </ul>
+          <a class="btn nav-cta" href={sitio.appUrl}>Probar el prototipo</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main"><slot /></main>
+    <footer class="foot">
+      <div class="wrap foot-grid">
+        <div>
+          <img src="/assets/logo.png" alt="ConnectMA" width="150" />
+          <p>{sitio.equipo} · TecnoChallenge 2026 · Màster en Emprenedoria i Innovació, TecnoCampus.</p>
+        </div>
+        <div>
+          <p><strong>Reto de {sitio.retador}</strong></p>
+          <p>Solo usamos datos abiertos y agregados por sección censal. Ningún dato personal.</p>
+        </div>
+      </div>
+    </footer>
+    <script>
+      const b = document.querySelector(".menu-btn");
+      const n = document.getElementById("nav");
+      b?.addEventListener("click", () => {
+        const open = b.getAttribute("aria-expanded") === "true";
+        b.setAttribute("aria-expanded", String(!open));
+        n?.classList.toggle("open", !open);
+      });
+    </script>
+  </body>
+</html>
+
+<style>
+  .skip { position: absolute; left: -999px; top: 0; background: var(--ink); color: #fff; padding: 0.6em 1em; z-index: 10; }
+  .skip:focus { left: 1rem; }
+  .top { position: sticky; top: 0; z-index: 5; background: color-mix(in srgb, var(--mist) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 68px; }
+  .brand { display: flex; align-items: center; gap: 0.55rem; text-decoration: none; color: var(--ink); font-weight: 800; font-size: 1.25rem; letter-spacing: -0.02em; }
+  .brand b { color: var(--sea); font-weight: 800; }
+  nav { display: flex; align-items: center; gap: 1.5rem; }
+  nav ul { display: flex; gap: 1.3rem; list-style: none; margin: 0; padding: 0; }
+  nav ul a { color: var(--ink); text-decoration: none; font-weight: 500; padding-block: 0.3em; border-bottom: 2px solid transparent; }
+  nav ul a:hover, nav ul a[aria-current="page"] { border-color: var(--sun); }
+  .nav-cta { padding: 0.65em 1.1em; font-size: 0.95rem; }
+  .menu-btn { display: none; font: 600 1rem var(--font); background: none; border: 2px solid var(--ink); border-radius: 999px; padding: 0.45em 1em; color: var(--ink); }
+  @media (max-width: 900px) {
+    .menu-btn { display: block; }
+    nav { display: none; position: absolute; top: 68px; left: 0; right: 0; flex-direction: column; align-items: stretch; background: var(--mist); padding: 1rem var(--gutter) 1.5rem; border-bottom: 1px solid var(--line); }
+    nav.open { display: flex; }
+    nav ul { flex-direction: column; gap: 0.2rem; }
+    nav ul a { display: block; padding: 0.6em 0; }
+  }
+  .foot { background: var(--paper); border-top: 1px solid var(--line); padding-block: 3rem; font-size: var(--step--1); color: var(--ink-soft); }
+  .foot-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; }
+  .foot img { margin-bottom: 1rem; }
+</style>

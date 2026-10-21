@@ -1,0 +1,81 @@
+---
+import mapa from "../data/mapa.json";
+const { compacto = false } = Astro.props;
+const NOMBRE = {
+  POTENCIAL: "Potencial",
+  DECLIVE: "Declive",
+  "EN RIESGO": "En riesgo",
+  CONSOLIDADA: "Consolidada",
+  ESTABLE: "Estable",
+  FUERA: "Rural, fuera del análisis",
+};
+const orden = ["POTENCIAL", "EN RIESGO", "DECLIVE", "CONSOLIDADA", "FUERA"];
+const cuenta = {};
+for (const s of mapa.secciones) {
+  const e = s.estado === "ESTABLE" ? "CONSOLIDADA" : s.estado;
+  cuenta[e] = (cuenta[e] || 0) + 1;
+}
+const xs = mapa.secciones.map((s) => s.cx);
+const x0 = Math.min(...xs), x1 = Math.max(...xs);
+---
+<figure class:list={["mapa", { compacto }]}>
+  <svg viewBox={`0 0 ${mapa.w} ${mapa.h}`} role="img" aria-labelledby="mapa-t">
+    <title id="mapa-t">Mapa de Mataró por secciones censales, coloreado según su estado comercial</title>
+    {mapa.secciones.map((s) => (
+      <path
+        d={s.d}
+        class={`sec st-${s.estado.replace(" ", "_")}`}
+        style={`--i:${((s.cx - x0) / (x1 - x0)).toFixed(3)}`}
+        data-c={s.c}
+        data-estado={NOMBRE[s.estado] || s.estado}
+        data-barrio={s.barrio}
+        data-ficha={s.ficha}
+        tabindex={["POTENCIAL", "DECLIVE", "EN RIESGO"].includes(s.estado) ? 0 : -1}
+      />
+    ))}
+  </svg>
+  <figcaption>
+    <ul class="leyenda">
+      {orden.filter((e) => cuenta[e]).map((e) => (
+        <li class={`st-${e.replace(" ", "_")}`}><span class="dot"></span>{NOMBRE[e]} <span class="num">{cuenta[e]}</span></li>
+      ))}
+    </ul>
+    <p class="tip" aria-live="polite">Pasa el ratón por una zona de color para ver su ficha.</p>
+  </figcaption>
+</figure>
+
+<script>
+  document.querySelectorAll(".mapa").forEach((fig) => {
+    const tip = fig.querySelector(".tip");
+    const defecto = tip.textContent;
+    const show = (p) => {
+      const b = p.dataset.barrio ? `${p.dataset.barrio} · ` : "";
+      tip.innerHTML = `<strong>${b}${p.dataset.estado}</strong><br>${p.dataset.ficha || `Sección ${p.dataset.c}`}`;
+    };
+    fig.querySelectorAll(".sec").forEach((p) => {
+      p.addEventListener("mouseenter", () => show(p));
+      p.addEventListener("focus", () => show(p));
+      p.addEventListener("click", () => show(p));
+    });
+    fig.querySelector("svg").addEventListener("mouseleave", () => (tip.textContent = defecto));
+  });
+</script>
+
+<style>
+  .mapa { margin: 0; }
+  svg { width: 100%; height: auto; max-height: 72vh; display: block; overflow: hidden; }
+  .sec {
+    fill: var(--c); stroke: var(--mist); stroke-width: 1.6; stroke-linejoin: round;
+    transition: filter 0.15s;
+    animation: aparece 0.5s ease-out both;
+    animation-delay: calc(var(--i) * 1.1s + 0.2s);
+  }
+  .sec[tabindex="0"] { cursor: pointer; }
+  .sec:hover, .sec:focus { filter: brightness(0.88); outline: none; stroke: var(--ink); stroke-width: 2.5; }
+  @keyframes aparece { from { fill: var(--st-fuera); } }
+  .leyenda { list-style: none; padding: 0; margin: 1rem 0 0.6rem; display: flex; flex-wrap: wrap; gap: 0.4rem 1.2rem; font-size: var(--step--1); font-weight: 500; }
+  .leyenda .dot { margin-right: 0.4em; }
+  .leyenda .num { color: var(--ink-soft); margin-left: 0.15em; }
+  .tip { font-size: var(--step--1); color: var(--ink-soft); min-height: 4.2em; margin: 0; max-width: 46ch; }
+  .tip :global(strong) { color: var(--ink); }
+</style>

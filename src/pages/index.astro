@@ -1,0 +1,187 @@
+---
+import Base from "../layouts/Base.astro";
+import Mapa from "../components/Mapa.astro";
+import { sitio, resultados } from "../data/sitio.js";
+
+// Tres fichas reales del radar v3 (21/10/2026)
+const fichas = [
+  {
+    estado: "POTENCIAL", barrio: "Eixample", seccion: "0812102011",
+    dato: "Gana vecinos: +26 puntos sobre el barrio típico.",
+    detalle: "Tiene el 63 % del comercio de proximidad que le correspondería. Faltan unos 8 supermercados o tiendas de alimentación, 6 de electrónica y reparación y 5 bazares.",
+    accion: "Generar informe para emprendedor",
+  },
+  {
+    estado: "EN RIESGO", barrio: "Peramàs", seccion: "0812106013",
+    dato: "Pierde vecinos: −6 % en nueve años.",
+    detalle: "Hoy tiene más comercio que un barrio típico (115 %), pero cada año con menos clientes alrededor. Es donde hay que vigilar los locales que cierran.",
+    accion: "Marcar local vacío",
+  },
+  {
+    estado: "DECLIVE", barrio: "Cerdanyola", seccion: "0812105021",
+    dato: "Pierde vecinos: −11 % en nueve años.",
+    detalle: "Y ya solo tiene el 57 % del comercio de un barrio típico. Candidata clara a las ayudas de reactivación.",
+    accion: "Proponer para Aixequem Persianes",
+  },
+];
+---
+<Base>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-txt">
+        <p class="contexto">Reto del Ajuntament de Mataró para el TecnoChallenge 2026</p>
+        <h1>Dónde le falta comercio a Mataró, y dónde lo está perdiendo.</h1>
+        <p class="lead">Cruzamos el censo de actividades del Ajuntament con la población y la renta del INE. Así marcamos, sección a sección, qué zonas tienen potencial y cuáles están en riesgo, y qué hacer en cada una.</p>
+        <div class="ctas">
+          <a class="btn" href={sitio.appUrl}>Probar el prototipo</a>
+          <a class="btn ghost" href="/solucion">Ver la solución</a>
+        </div>
+      </div>
+      <Mapa />
+    </div>
+  </section>
+
+  <section class="fuentes" aria-label="Datos que usamos">
+    <div class="wrap fuentes-grid">
+      <p><strong class="num">4.819</strong> actividades en planta baja del censo municipal</p>
+      <p><strong class="num">75</strong> secciones censales del INE, con 10 años de población y renta</p>
+      <p><strong class="num">25.062</strong> árboles municipales para poner nombre de barrio a cada zona</p>
+      <p><strong>0</strong> datos personales: todo agregado por sección (RGPD)</p>
+    </div>
+  </section>
+
+  <section class="problema">
+    <div class="wrap dos">
+      <div>
+        <h2>Hoy se decide a ciegas</h2>
+        <p class="lead">El censo de locales se actualiza a mano, recorriendo la ciudad una vez al año. A quien quiere abrir un negocio se le enseña el GeoVisor y decide solo.</p>
+      </div>
+      <ul class="hoy">
+        <li><strong>Sin tendencia.</strong> El GeoVisor muestra qué hay hoy, no si la zona gana o pierde vecinos.</li>
+        <li><strong>Sin comparación.</strong> Nadie dice si a un barrio le faltan panaderías o le sobran.</li>
+        <li><strong>Ayudas en el centro.</strong> La mayoría de las ayudas de Aixequem Persianes de 2023 fueron al centro.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="como">
+    <div class="wrap">
+      <h2>Cómo funciona</h2>
+      <ol class="pasos">
+        <li>
+          <h3>Juntamos datos abiertos</h3>
+          <p>Censo de actividades del GeoVisor, población y renta del INE (2015–2024) y capas municipales de población y barrios.</p>
+        </li>
+        <li>
+          <h3>Medimos cada zona</h3>
+          <p>Para cada sección miramos los vecinos a 400 m a pie y los comparamos con el comercio de proximidad de un barrio típico de Mataró.</p>
+        </li>
+        <li>
+          <h3>Proponemos qué hacer</h3>
+          <p>Cada zona sale como potencial, en riesgo, en declive o consolidada, con una acción concreta para el Ajuntament.</p>
+        </li>
+      </ol>
+      <p><a href={sitio.metodologiaUrl}>Leer la metodología completa</a>, con fórmulas, fuentes y límites de los datos.</p>
+    </div>
+  </section>
+
+  <section class="detecta">
+    <div class="wrap">
+      <h2>Lo que ya detecta</h2>
+      <p class="lead">Tres fichas reales del radar. Cada una termina en una acción, no en un gráfico.</p>
+      <div class="fichas">
+        {fichas.map((f) => (
+          <article class={`ficha st-${f.estado.replace(" ", "_")}`}>
+            <p class="ficha-estado"><span class="dot"></span>{f.estado === "EN RIESGO" ? "En riesgo" : f.estado.charAt(0) + f.estado.slice(1).toLowerCase()} · {f.barrio}</p>
+            <h3>{f.dato}</h3>
+            <p>{f.detalle}</p>
+            <p class="ficha-accion">{f.accion}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="ruta">
+    <div class="wrap">
+      <h2>Nuestro proceso</h2>
+      <p class="lead">Los diez resultados del TecnoChallenge. En cada uno contamos qué hicimos, qué aprendimos y qué cambió en la solución.</p>
+      <ol class="resultados">
+        {resultados.map((r) => (
+          <li class={`r-${r.estado.replace(" ", "-")}`}>
+            <a href={r.href}><span class="r-n num">{r.n}</span><span class="r-t">{r.titulo}</span><span class="r-e">{r.estado}</span></a>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="video" id="video">
+    <div class="wrap">
+      <h2>La solución en dos minutos</h2>
+      <div class="pendiente">El vídeo (resultado 8) se publica el domingo 25 de octubre.</div>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="wrap final-in">
+      <h2>Explora tu barrio</h2>
+      <p class="lead">Filtra por barrio, estado o tipo de negocio que falta y genera la ficha de cualquier zona.</p>
+      <a class="btn" href={sitio.appUrl}>Probar el prototipo</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero { padding-top: clamp(2rem, 5vw, 4rem); }
+  .hero-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+  .contexto { font-weight: 600; color: var(--sea); margin-bottom: 1.2rem; }
+  .ctas { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 2rem; }
+  @media (max-width: 860px) { .hero-grid { grid-template-columns: 1fr; } }
+
+  .fuentes { background: var(--ink); color: #dbe7f0; padding-block: 2.2rem; }
+  .fuentes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1.5rem 2.5rem; }
+  .fuentes p { margin: 0; font-size: var(--step--1); line-height: 1.4; }
+  .fuentes strong { display: block; color: #fff; font-size: var(--step-2); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 0.15rem; }
+
+  .dos { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 5rem); align-items: start; }
+  @media (max-width: 860px) { .dos { grid-template-columns: 1fr; } }
+  .hoy { list-style: none; padding: 0; margin: 0; }
+  .hoy li { padding: 1.1rem 0; border-top: 1px solid var(--line); }
+  .hoy li:last-child { border-bottom: 1px solid var(--line); }
+
+  .como { background: var(--paper); border-block: 1px solid var(--line); }
+  .pasos { list-style: none; counter-reset: paso; padding: 0; margin: 2rem 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
+  .pasos li { counter-increment: paso; position: relative; padding-top: 3.6rem; }
+  .pasos li::before {
+    content: counter(paso); position: absolute; top: 0; left: 0;
+    font-size: 2.6rem; font-weight: 800; line-height: 1; color: var(--sea);
+  }
+  .pasos li:not(:last-child)::after { content: ""; position: absolute; top: 1.3rem; left: 2.6rem; right: -1.5rem; height: 2px; background: var(--line); }
+  @media (max-width: 760px) { .pasos { grid-template-columns: 1fr; } .pasos li::after { display: none; } }
+
+  .fichas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; margin-top: 2.2rem; }
+  @media (max-width: 960px) { .fichas { grid-template-columns: 1fr; } }
+  .ficha { background: var(--paper); border-top: 6px solid var(--c); padding: 1.5rem 1.5rem 1.3rem; display: flex; flex-direction: column; }
+  .ficha-estado { font-weight: 600; font-size: var(--step--1); margin-bottom: 0.9rem; }
+  .ficha-estado .dot { margin-right: 0.45em; }
+  .ficha h3 { font-size: var(--step-1); }
+  .ficha p { color: var(--ink-soft); }
+  .ficha-accion { margin: auto 0 0; padding-top: 1rem; border-top: 1px solid var(--line); color: var(--ink) !important; font-weight: 700; }
+
+  .resultados { list-style: none; padding: 0; margin: 2rem 0 0; display: grid; grid-template-columns: repeat(5, 1fr); border-top: 2px solid var(--ink); }
+  @media (max-width: 900px) { .resultados { grid-template-columns: repeat(2, 1fr); } }
+  .resultados a { display: grid; gap: 0.25rem; padding: 1.1rem 1rem 1.3rem 0; text-decoration: none; color: var(--ink); border-bottom: 1px solid var(--line); height: 100%; }
+  .resultados a:hover .r-t { color: var(--sea); }
+  .r-n { font-size: var(--step-2); font-weight: 800; color: var(--line); line-height: 1; }
+  .r-en-curso .r-n { color: var(--sun); }
+  .r-hecho .r-n { color: var(--sea); }
+  .r-t { font-weight: 600; }
+  .r-e { font-size: var(--step--1); color: var(--ink-soft); }
+
+  .final { background: var(--sea); color: #fff; }
+  .final-in { text-align: left; }
+  .final .lead { color: #e6f6fd; }
+  .final .btn { background: #fff; color: var(--ink); border-color: #fff; margin-top: 1rem; }
+  .final .btn:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+</style>

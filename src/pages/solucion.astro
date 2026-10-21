@@ -1,0 +1,149 @@
+---
+import Base from "../layouts/Base.astro";
+import Mapa from "../components/Mapa.astro";
+import { sitio } from "../data/sitio.js";
+
+const acciones = [
+  { estado: "POTENCIAL", titulo: "Generar informe para emprendedor", texto: "Un PDF de una página con los vecinos de la zona, su tendencia y los negocios que faltan. El técnico lo entrega en la primera cita, en lugar de mandar al emprendedor al GeoVisor." },
+  { estado: "DECLIVE", titulo: "Proponer para Aixequem Persianes", texto: "Las zonas en declive o en riesgo pasan a una lista de candidatas para las ayudas del año, que hoy se concentran en el centro." },
+  { estado: "EN RIESGO", titulo: "Marcar local vacío", texto: "Durante la prospección anual, el técnico marca los locales que cierran. El declive deja de ser una estimación y pasa a medirse con cierres reales." },
+  { estado: "CONSOLIDADA", titulo: "Asesor personalizado", texto: "Quien emprende indica barrio, sector, presupuesto y experiencia, y recibe qué encaja en esa zona y por qué. El perfil no se guarda." },
+];
+---
+<Base titulo="Solución" descripcion="Radar de zonas con potencial y en declive comercial en Mataró, con una acción para cada zona.">
+  <section class="intro">
+    <div class="wrap intro-grid">
+      <div>
+        <p class="res-n">Resultados 5, 6 y 7</p>
+        <h1>Un radar que propone qué hacer en cada zona</h1>
+        <p class="lead">ConnectMA clasifica las 72 secciones urbanas de Mataró según si ganan o pierden vecinos y si tienen el comercio de proximidad que les corresponde. Cada estado lleva a una acción concreta del Ajuntament.</p>
+        <div class="ctas">
+          <a class="btn" href={sitio.appUrl}>Probar el prototipo</a>
+          <a class="btn ghost" href={sitio.metodologiaUrl}>Leer la metodología</a>
+        </div>
+      </div>
+      <Mapa compacto />
+    </div>
+  </section>
+
+  <section class="estados">
+    <div class="wrap">
+      <h2>Cuatro estados, dos preguntas</h2>
+      <p class="lead">¿La zona gana o pierde demanda (vecinos y renta, frente al barrio típico)? ¿Tiene el comercio de proximidad que le corresponde?</p>
+      <div class="matriz" role="table" aria-label="Estados según demanda y actividad">
+        <div role="row" class="m-row">
+          <span role="columnheader"></span>
+          <span role="columnheader" class="m-h">Poco comercio</span>
+          <span role="columnheader" class="m-h">Comercio suficiente</span>
+        </div>
+        <div role="row" class="m-row">
+          <span role="rowheader" class="m-h">Demanda que crece o se mantiene</span>
+          <div role="cell" class="m-c st-POTENCIAL"><strong>Potencial</strong><span>Faltan negocios para los vecinos que hay o que llegan.</span></div>
+          <div role="cell" class="m-c st-CONSOLIDADA"><strong>Consolidada</strong><span>Funciona. Vigilancia normal.</span></div>
+        </div>
+        <div role="row" class="m-row">
+          <span role="rowheader" class="m-h">Demanda que cae</span>
+          <div role="cell" class="m-c st-DECLIVE"><strong>Declive</strong><span>Pierde vecinos y ya le falta comercio.</span></div>
+          <div role="cell" class="m-c st-EN_RIESGO"><strong>En riesgo</strong><span>Hoy tiene comercio, mañana menos clientes.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="acciones">
+    <div class="wrap">
+      <h2>De ver a actuar</h2>
+      <p class="lead">Un mapa que solo se mira no cambia nada. Cada ficha del radar termina en una de estas acciones.</p>
+      <ul class="acc">
+        {acciones.map((a) => (
+          <li class={`st-${a.estado.replace(" ", "_")}`}>
+            <h3>{a.titulo}</h3>
+            <p>{a.texto}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="prototipo" id="prototipo">
+    <div class="wrap dos">
+      <div>
+        <p class="res-n">Resultado 7</p>
+        <h2>El prototipo</h2>
+        <p class="lead">Fichas de cada zona filtrables por barrio, estado y tipo de negocio que falta, con el mapa como segunda vista y las acciones funcionando.</p>
+        <a class="btn" href={sitio.appUrl}>Probar el prototipo</a>
+      </div>
+      <div class="pendiente">Captura del prototipo cuando esté publicado.</div>
+    </div>
+  </section>
+
+  <section class="ods">
+    <div class="wrap">
+      <h2>Impacto y ODS</h2>
+      <div class="ods-grid">
+        <article>
+          <h3>ODS 8 · Trabajo decente y crecimiento económico</h3>
+          <p>Ayuda a abrir negocios donde hay demanda y a sostener los que están en zonas que pierden vecinos.</p>
+        </article>
+        <article>
+          <h3>ODS 11 · Ciudades y comunidades sostenibles</h3>
+          <p>Barrios con servicios a menos de 400 m a pie: más vida en la calle y menos dependencia del centro y de los centros comerciales.</p>
+        </article>
+        <article>
+          <h3>Impacto ambiental</h3>
+          <p>Cada compra que se hace a pie en el barrio es un desplazamiento en coche menos.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="pendientes">
+    <div class="wrap dos">
+      <div id="ecocanvas">
+        <p class="res-n">Resultado 6</p>
+        <h2>EcoCanvas</h2>
+        <div class="pendiente">Se completa el sábado 24 de octubre.</div>
+      </div>
+      <div id="pitch">
+        <p class="res-n">Resultado 9</p>
+        <h2>Co-pitch</h2>
+        <div class="pendiente">Presentación del domingo 25 de octubre.</div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .res-n { font-weight: 600; color: var(--sea); }
+  .intro { padding-top: clamp(2rem, 5vw, 4rem); }
+  .intro-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+  .ctas { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 2rem; }
+  .dos { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+  @media (max-width: 860px) { .intro-grid, .dos { grid-template-columns: 1fr; } }
+
+  .estados { background: var(--paper); border-block: 1px solid var(--line); }
+  .matriz { display: grid; gap: 0.6rem; margin-top: 2rem; max-width: 900px; }
+  .m-row { display: grid; grid-template-columns: 11rem 1fr 1fr; gap: 0.6rem; }
+  .m-h { font-weight: 600; font-size: var(--step--1); color: var(--ink-soft); align-self: end; padding-bottom: 0.3rem; }
+  .m-row .m-h:first-child { align-self: center; }
+  .m-c { background: color-mix(in srgb, var(--c) 30%, white); border-left: 6px solid var(--c); padding: 1.1rem 1.2rem; min-height: 7rem; display: grid; align-content: start; gap: 0.3rem; }
+  .m-c strong { font-size: var(--step-1); }
+  .m-c span { color: var(--ink-soft); font-size: var(--step--1); }
+  @media (max-width: 640px) { .m-row { grid-template-columns: 6.5rem 1fr 1fr; } .m-c { padding: 0.8rem; } }
+
+  .acc { list-style: none; padding: 0; margin: 2rem 0 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 3rem; }
+  @media (max-width: 760px) { .acc { grid-template-columns: 1fr; } }
+  .acc li { border-top: 3px solid var(--c); padding: 1.3rem 0 1rem; }
+  .acc p { color: var(--ink-soft); }
+
+  .prototipo { background: var(--ink); color: #e3edf5; }
+  .prototipo .lead { color: #c4d4e2; }
+  .prototipo .res-n { color: var(--sun); }
+  .prototipo .btn { background: var(--sun); border-color: var(--sun); color: var(--ink); margin-top: 1rem; }
+  .prototipo .pendiente { background: transparent; color: #c4d4e2; border-color: #3c5373; min-height: 14rem; display: grid; place-items: center; }
+
+  .ods-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 1.5rem; }
+  @media (max-width: 860px) { .ods-grid { grid-template-columns: 1fr; } }
+  .ods-grid article { border-top: 2px solid var(--ink); padding-top: 1rem; }
+  .ods-grid p { color: var(--ink-soft); }
+</style>

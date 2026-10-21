@@ -1,0 +1,14 @@
+{
+  "name": "connectma-web",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "mapa": "node scripts/build-map.mjs",
+    "dev": "node scripts/build-map.mjs && astro dev",
+    "build": "node scripts/build-map.mjs && astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "astro": "^7.4.1"
+  }
+}

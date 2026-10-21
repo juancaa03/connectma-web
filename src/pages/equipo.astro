@@ -1,0 +1,52 @@
+---
+import Base from "../layouts/Base.astro";
+import { sitio } from "../data/sitio.js";
+import { integrantes, fotoEquipo, valores } from "../data/equipo.js";
+const iniciales = (n) => n.replace(/[\[\]]/g, "").split(" ").map((p) => p[0]).slice(0, 2).join("");
+---
+<Base titulo="Equipo" descripcion="El equipo de ConnectMA en el TecnoChallenge 2026.">
+  <section class="eq">
+    <div class="wrap">
+      <p class="res-n">Resultado 1</p>
+      <h1>ConnectMA · {sitio.equipo}</h1>
+      <p class="lead">Estudiantes del Màster en Emprenedoria i Innovació de TecnoCampus, trabajando el reto del Ajuntament de Mataró.</p>
+
+      {fotoEquipo
+        ? <img class="foto-equipo" src={fotoEquipo} alt="El equipo de ConnectMA" />
+        : <div class="pendiente foto-equipo vacia">Foto del equipo</div>}
+
+      <ul class="personas">
+        {integrantes.map((p) => (
+          <li>
+            {p.foto
+              ? <img src={p.foto} alt={p.nombre} width="160" height="160" loading="lazy" />
+              : <span class="avatar" aria-hidden="true">{iniciales(p.nombre)}</span>}
+            <h2>{p.nombre}</h2>
+            <p class="rol">{p.rol}</p>
+            <p>{p.aporta}</p>
+            {p.linkedin && <a href={p.linkedin} rel="noopener">LinkedIn de {p.nombre.split(" ")[0]}</a>}
+          </li>
+        ))}
+      </ul>
+
+      <h2 class="val-t">Cómo trabajamos</h2>
+      <ul class="valores">{valores.map((v) => <li>{v}</li>)}</ul>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .eq { padding-top: clamp(2.5rem, 6vw, 5rem); }
+  .res-n { font-weight: 600; color: var(--sea); }
+  .foto-equipo { width: 100%; aspect-ratio: 21 / 9; object-fit: cover; margin: 2.5rem 0; border-radius: 4px; }
+  .vacia { display: grid; place-items: center; max-width: none; }
+  .personas { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 2.5rem 2rem; }
+  .personas img, .avatar { width: 160px; height: 160px; border-radius: 50%; object-fit: cover; margin-bottom: 1.2rem; }
+  .avatar { display: grid; place-items: center; background: var(--foam); color: var(--ink); font-weight: 800; font-size: 2.4rem; }
+  .personas h2 { font-size: var(--step-1); margin-bottom: 0.15rem; }
+  .rol { color: var(--sea); font-weight: 600; margin-bottom: 0.6rem; }
+  .personas p:not(.rol) { color: var(--ink-soft); font-size: var(--step--1); }
+  .val-t { font-size: var(--step-2); margin-top: 4rem; }
+  .valores { display: flex; flex-wrap: wrap; gap: 0.6rem; list-style: none; padding: 0; }
+  .valores li { border: 2px solid var(--ink); border-radius: 999px; padding: 0.4em 1em; font-weight: 600; }
+</style>
