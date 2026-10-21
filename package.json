@@ -8,6 +8,9 @@
     "build": "node scripts/build-map.mjs && astro build",
     "preview": "astro preview"
   },
+  "engines": { 
+    "node": ">=22.22.0" 
+  },
   "dependencies": {
     "astro": "^7.4.1"
   }

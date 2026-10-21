@@ -4,24 +4,24 @@
 import Base from "./Base.astro";
 import { resultados } from "../data/sitio.js";
 const { frontmatter } = Astro.props;
-const n = Number(String(frontmatter.resultado).split("–")[0]);
+const n = frontmatter.resultado ? Number(String(frontmatter.resultado).split("–")[0]) : null;
 const i = resultados.findIndex((r) => r.n === n);
-const ant = resultados.slice(0, i).reverse().find((r) => !r.href.includes("#") && r.href !== resultados[i]?.href);
-const sig = resultados.slice(i + 1).find((r) => !r.href.includes("#") && r.href !== resultados[i]?.href);
+const ant = i < 0 ? null : resultados.slice(0, i).reverse().find((r) => !r.href.includes("#") && r.href !== resultados[i]?.href);
+const sig = i < 0 ? null : resultados.slice(i + 1).find((r) => !r.href.includes("#") && r.href !== resultados[i]?.href);
 ---
 <Base titulo={frontmatter.titulo} descripcion={frontmatter.entradilla}>
   <article class="wrap res">
     <header class="res-head">
-      <p class="res-n">Resultado {frontmatter.resultado}{frontmatter.fase && ` · ${frontmatter.fase}`}</p>
+      <p class="res-n">{frontmatter.etiqueta ?? `Resultado ${frontmatter.resultado}`}{frontmatter.fase && ` · ${frontmatter.fase}`}</p>
       <h1>{frontmatter.titulo}</h1>
       {frontmatter.entradilla && <p class="lead">{frontmatter.entradilla}</p>}
       {frontmatter.autoria && <p class="autoria">Redactado por {frontmatter.autoria}</p>}
     </header>
     <div class="prose"><slot /></div>
-    <nav class="res-nav" aria-label="Resultados">
+    {i >= 0 && <nav class="res-nav" aria-label="Resultados">
       {ant ? <a href={ant.href}>Anterior: {ant.titulo}</a> : <span />}
       {sig && <a href={sig.href}>Siguiente: {sig.titulo}</a>}
-    </nav>
+    </nav>}
   </article>
 </Base>
 

@@ -5,7 +5,7 @@ export const sitio = {
   reto: "¿Cómo podemos utilizar datos urbanos abiertos para que el Ayuntamiento y el comercio de proximidad identifiquen oportunidades para promover la actividad comercial en Mataró?",
   retador: "Ajuntament de Mataró · EDINT",
   appUrl: "#", // URL del prototipo cuando esté publicado
-  metodologiaUrl: "https://claude.ai/code/artifact/a53ff0c3-d5dc-49c6-a203-c4166ef4a7fd",
+  metodologiaUrl: "/metodologia",
 };
 
 // Páginas de la web, en el orden de la hoja de ruta del TecnoChallenge
