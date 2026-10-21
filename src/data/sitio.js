@@ -4,7 +4,7 @@ export const sitio = {
   equipo: "Equipo 2",
   reto: "¿Cómo podemos utilizar datos urbanos abiertos para que el Ayuntamiento y el comercio de proximidad identifiquen oportunidades para promover la actividad comercial en Mataró?",
   retador: "Ajuntament de Mataró · EDINT",
-  appUrl: "#", // URL del prototipo cuando esté publicado
+  appUrl: "https://connectma-app.vercel.app/",
   metodologiaUrl: "/metodologia",
 };
 
