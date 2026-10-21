@@ -3,9 +3,9 @@ export const fotoEquipo = ""; // p. ej. "/equipo/equipo.jpg"
 export const valores = ["[valor 1]", "[valor 2]", "[valor 3]"];
 export const integrantes = [
   {
-    nombre: "Juan Carlos Medinilla",
-    rol: "Datos y desarrollo",
-    aporta: "Descarga y cruce de datos abiertos, radar y web.",
+    nombre: "",
+    rol: "",
+    aporta: "",
     foto: "",
     linkedin: "",
   },
