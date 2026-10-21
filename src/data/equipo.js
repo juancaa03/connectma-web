@@ -3,12 +3,13 @@ export const fotoEquipo = ""; // p. ej. "/equipo/equipo.jpg"
 export const valores = ["[valor 1]", "[valor 2]", "[valor 3]"];
 export const integrantes = [
   {
-    nombre: "",
-    rol: "",
-    aporta: "",
+    nombre: "[Nombre]",
+    rol: "[Rol]",
+    aporta: "[Qué aporta al proyecto]",
     foto: "",
     linkedin: "",
   },
+  { nombre: "[Nombre]", rol: "[Rol]", aporta: "[Qué aporta al proyecto]", foto: "", linkedin: "" },
   { nombre: "[Nombre]", rol: "[Rol]", aporta: "[Qué aporta al proyecto]", foto: "", linkedin: "" },
   { nombre: "[Nombre]", rol: "[Rol]", aporta: "[Qué aporta al proyecto]", foto: "", linkedin: "" },
   { nombre: "[Nombre]", rol: "[Rol]", aporta: "[Qué aporta al proyecto]", foto: "", linkedin: "" },
