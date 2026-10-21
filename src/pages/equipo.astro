@@ -40,8 +40,32 @@ const iniciales = (n) => n.replace(/[\[\]]/g, "").split(" ").map((p) => p[0]).sl
   .res-n { font-weight: 600; color: var(--sea); }
   .foto-equipo { width: 100%; aspect-ratio: 21 / 9; object-fit: cover; margin: 2.5rem 0; border-radius: 4px; }
   .vacia { display: grid; place-items: center; max-width: none; }
-  .personas { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 2.5rem 2rem; }
-  .personas img, .avatar { width: 160px; height: 160px; border-radius: 50%; object-fit: cover; margin-bottom: 1.2rem; }
+  
+  .personas { 
+    list-style: none; 
+    padding: 0; 
+    margin: 0; 
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center;
+    gap: 2.5rem 2rem; 
+  }
+  
+  .personas li {
+    flex: 1 1 200px;
+    max-width: 240px;
+    text-align: center;
+  }
+
+  .personas img, .avatar { 
+    width: 140px;
+    height: 140px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    margin: 0 auto 1.2rem auto;
+    display: block;
+  }
+  
   .avatar { display: grid; place-items: center; background: var(--foam); color: var(--ink); font-weight: 800; font-size: 2.4rem; }
   .personas h2 { font-size: var(--step-1); margin-bottom: 0.15rem; }
   .rol { color: var(--sea); font-weight: 600; margin-bottom: 0.6rem; }
