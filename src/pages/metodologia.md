@@ -64,8 +64,9 @@ Para 12 tipos de proximidad (panadería, carnicería, supermercado, peluquería 
 5. **Filtro contra el azar:** en cada radio, el tipo cuenta si hay menos de la mitad de lo esperado, la diferencia es de al menos 2 negocios y la probabilidad de que sea casualidad (distribución de Poisson) es menor del 5 %.
 6. **Robusto:** se cumple con el radio de 450 m y con al menos uno de los otros dos. Solo los robustos son oportunidad; así no dependen de dónde cae una tienda concreta. Los que salen con menos radios se enseñan como "a confirmar".
 7. **Polos de atracción:** si hay un mercado municipal (Plaça de Cuba, Plaça Gran, Palau) a menos de 450 m, no cuentan panadería ni carnicería; si hay una gran superficie (Alcampo, Mataró Parc), no cuenta supermercado. El polo anula el hueco de ese tipo, no el interés de la zona: un local vacío cerca de un mercado sigue siendo una oportunidad de ubicación.
+8. **Comparar con barrios de renta parecida:** salud, óptica, floristería y librería dependen sobre todo del poder adquisitivo. Para estos cuatro tipos, lo normal es la mediana de los barrios del mismo tercio de renta, no la de toda la ciudad. En salud la diferencia es enorme: 1,3 negocios por cada 10.000 vecinos en los barrios de renta baja, 4,3 en los de renta media y 11,8 en los de renta alta.
 
-**Resultado:** 38 oportunidades robustas en 25 secciones, 33 con dato fiable, y 70 más a confirmar. La hostelería se marca con confianza baja porque el GeoVisor no la recoge bien.
+**Resultado:** 32 oportunidades robustas en 18 secciones, 27 con dato fiable, y 67 más a confirmar. La hostelería se marca con confianza baja porque el GeoVisor no la recoge bien.
 
 > "A 450 m a la redonda viven ~12.933 personas y hay 2 bazares, donde un barrio típico de Mataró tendría ~8: el 26 % de lo normal. Se mantiene con radios de 300, 450 y 600 m."
 
