@@ -3,24 +3,24 @@ import Base from "../layouts/Base.astro";
 import Mapa from "../components/Mapa.astro";
 import { sitio, resultados } from "../data/sitio.js";
 
-// Tres fichas reales del radar v3 (21/10/2026)
+// Tres fichas reales del radar v3 (22/10/2026)
 const fichas = [
   {
     estado: "POTENCIAL", barrio: "Eixample", seccion: "0812102011",
     dato: "Gana vecinos: +26 puntos sobre el barrio típico.",
-    detalle: "Para unos 12.900 vecinos a 450 m no hay ninguna tienda de electrónica y reparación, y los bazares están al 26\u00a0% de lo normal.",
+    detalle: "Para unos 12.900 vecinos a 450 m hay una sola librería y papelería, el 15\u00a0% de lo normal, y los bazares están al 27\u00a0%. Y llegan más vecinos: 93 viviendas nuevas desde 2023.",
     accion: "Generar informe para emprendedor",
   },
   {
     estado: "EN RIESGO", barrio: "Peramàs", seccion: "0812106013",
     dato: "Pierde vecinos: −6\u00a0% en nueve años.",
-    detalle: "Hoy tiene más comercio que un barrio típico (111\u00a0%), pero cada año con menos clientes alrededor. Es donde hay que vigilar los locales que cierran.",
+    detalle: "Hoy tiene más comercio que un barrio típico (122\u00a0%), pero cada año con menos clientes alrededor. Es donde hay que vigilar los locales que cierran.",
     accion: "Marcar local vacío",
   },
   {
     estado: "DECLIVE", barrio: "Cerdanyola", seccion: "0812105021",
     dato: "Pierde vecinos: −11\u00a0% en nueve años.",
-    detalle: "Y ya solo tiene el 58\u00a0% del comercio de un barrio típico. Candidata clara a las ayudas de reactivación.",
+    detalle: "Y ya solo tiene el 59\u00a0% del comercio de un barrio típico, con la salud al 28\u00a0% de lo normal. Candidata clara a las ayudas de reactivación.",
     accion: "Proponer para Aixequem Persianes",
   },
 ];
@@ -46,7 +46,7 @@ const fichas = [
       <p><strong class="num">4.819</strong> actividades en planta baja del censo municipal</p>
       <p><strong class="num">95 %</strong> de los vecinos analizados, en 72 zonas, con 10 años de población y renta del INE</p>
       <p><strong class="num">11.902</strong> edificios del Catastro para detectar obra nueva</p>
-      <p><strong class="num">38</strong> oportunidades confirmadas con tres radios distintos</p>
+      <p><strong class="num">11</strong> oportunidades de negocio que superan todas las comprobaciones</p>
       <p><strong>0</strong> datos personales: todo agregado por sección (RGPD)</p>
     </div>
   </section>
@@ -60,7 +60,7 @@ const fichas = [
       <ul class="hoy">
         <li><strong>Sin tendencia.</strong> El GeoVisor muestra qué hay hoy, no si la zona gana o pierde vecinos.</li>
         <li><strong>Sin comparación.</strong> Nadie dice si a un barrio le faltan panaderías o le sobran.</li>
-        <li><strong>Ayudas en el centro.</strong> La mayoría de las ayudas de Aixequem Persianes de 2023 fueron al centro.</li>
+        <li><strong>Sin locales vacíos.</strong> No hay un dato abierto de locales vacíos: el Ajuntament tiene información de trabajo, pero no es pública.</li>
       </ul>
     </div>
   </section>
@@ -71,11 +71,11 @@ const fichas = [
       <ol class="pasos">
         <li>
           <h3>Juntamos datos abiertos</h3>
-          <p>Censo de actividades del GeoVisor, población y renta del INE (2015–2024) y capas municipales de población y barrios.</p>
+          <p>Censo de actividades del GeoVisor, población y renta del INE (2015–2024), edificios del Catastro y capas municipales de población y barrios.</p>
         </li>
         <li>
           <h3>Medimos cada zona</h3>
-          <p>Para cada sección miramos los vecinos y los negocios a 300, 450 y 600 m a pie y los comparamos con un barrio típico de Mataró.</p>
+          <p>Para cada sección miramos los vecinos y los negocios a 300, 450 y 600 m a pie y los comparamos con barrios parecidos de Mataró: sin contar el centro y, cuando importa, con la misma renta.</p>
         </li>
         <li>
           <h3>Proponemos qué hacer</h3>

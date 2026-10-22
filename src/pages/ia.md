@@ -33,6 +33,8 @@ Lo que hace fiable el radar no es la IA, es haber comprobado cada paso. Estos so
 - **Un ejemplo que dependía del radio:** "0 ferreterías" en una zona de Cerdanyola desaparecía al pasar de 400 a 450 m. Por eso cada oportunidad se confirma con tres radios.
 - **El centro como falso modelo:** el centro tiene de todo por encima de lo normal porque es destino de toda la ciudad. Lo excluimos como origen de "extender lo que funciona".
 - **Servicios privados en barrios humildes:** comparar las clínicas de un barrio con renta baja con la media de la ciudad lo hacía parecer siempre deficitario. Para salud, óptica, floristería y librería comparamos con barrios de renta parecida.
+- **El centro como falsa referencia:** los barrios de renta alta son también los céntricos, y el centro tiene de todo porque sirve a toda la ciudad. Al compararlos, el radar decía que faltaban 81 peluquerías donde había 70. Ahora el centro no cuenta para calcular lo normal.
+- **Una categoría del GeoVisor que mezcla de todo:** de 739 "serveis personals", solo 293 eran peluquería o estética; el resto eran autoescuelas, colegios, médicos o gimnasios. Los clasificamos por su descripción.
 
 ## Nuestras reglas
 
