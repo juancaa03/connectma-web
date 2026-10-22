@@ -64,6 +64,58 @@ const acciones = [
       </ul>
     </div>
   </section>
+<section class="encaje">
+    <div class="wrap">
+      <h2>Lo que pidió Comerç, y cómo lo cubrimos</h2>
+      <p class="lead">En la llamada del 20 de octubre, el servicio de Comerç nos dijo qué necesita. Esto es lo que el prototipo ya resuelve con datos públicos, y lo que mejora cuando se conectan datos que el propio Ajuntament ya tiene.</p>
+      <div class="table-scroll">
+        <table class="tabla-encaje">
+          <thead><tr><th>Lo que pidieron</th><th>En el prototipo (datos públicos)</th><th>En el servicio (con datos municipales)</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Decidir la política comercial</strong> desde el Ajuntament</td><td>Bandeja priorizada; cada zona termina en una acción: informe, Aixequem Persianes o marcar local vacío</td><td>Seguimiento año a año del efecto de cada ayuda</td></tr>
+            <tr><td><strong>Tipología:</strong> qué actividad falta y dónde</td><td>Tipos de proximidad muy por debajo de lo normal, confirmados con tres radios y descontando mercados y grandes superficies</td><td>Censo vivo con las aperturas que ya comunica cada negocio</td></tr>
+            <tr><td><strong>Zonas con potencial</strong> y la "mancha de aceite"</td><td>Zonas que ganan vecinos con poca oferta, y tipos que funcionan en la zona de al lado y aquí casi no hay</td><td>Con el histórico de la prospección: qué actividad está <em>creciendo</em>, no solo dónde se concentra</td></tr>
+            <tr><td><strong>Zonas en declive:</strong> calles que se vacían</td><td>Riesgo estimado desde la demanda; aviso de obra nueva (Catastro) para no confundir una zona en obras con una que se vacía; locales vacíos marcados por la técnica</td><td>Declive medido con cierres reales y padrón actualizado cada mes</td></tr>
+            <tr><td><strong>Afluencia</strong></td><td>Lo que atrae gente a cada zona: estación, paradas de bus, centros educativos y de salud, mercados</td><td>Contadores de peatones y datos de movilidad</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="geovisor">
+    <div class="wrap dos">
+      <div>
+        <h2>Frente al GeoVisor</h2>
+        <p class="lead">El GeoVisor dice qué hay. ConnectMA dice qué falta, dónde y qué puede hacer el Ajuntament.</p>
+        <p>No lo sustituye: lo usa como fuente. El detalle de cada local y las demás capas urbanísticas siguen en el GeoVisor.</p>
+      </div>
+      <dl class="comparacion">
+        <div><dt>Para el Ajuntament</dt><dd><span>GeoVisor:</span> capas que hay que consultar una a una, sin tendencia ni comparación.<br /><span>ConnectMA:</span> zonas priorizadas, el motivo y la herramienta para cada una.</dd></div>
+        <div><dt>Para quien emprende</dt><dd><span>GeoVisor:</span> un mapa que interpreta solo.<br /><span>ConnectMA:</span> un informe de una página y un asesor por tipo de negocio, en la primera cita con el técnico.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="ruta-servicio">
+    <div class="wrap">
+      <h2>Del piloto al servicio</h2>
+      <ol class="fases">
+        <li>
+          <h3>Piloto: datos públicos</h3>
+          <p>Lo que hay hoy en el prototipo. Censo de actividades del GeoVisor, INE, Catastro y OpenStreetMap. Se puede probar con Comerç en la próxima convocatoria de Aixequem Persianes sin pedir ningún dato.</p>
+        </li>
+        <li>
+          <h3>Servicio: datos que el Ajuntament ya tiene</h3>
+          <p>Padrón agregado por sección (población del mes, no de hace dos años), censo vivo de aperturas y cierres, histórico de la prospección y locales vacíos. El declive pasa de estimarse a medirse.</p>
+        </li>
+        <li>
+          <h3>Validación</h3>
+          <p>Con el histórico, comprobar hacia atrás si el radar habría avisado de las zonas que luego perdieron comercio. Es la prueba de que funciona.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
 
   <section class="prototipo" id="prototipo">
     <div class="wrap dos">
@@ -146,4 +198,22 @@ const acciones = [
   @media (max-width: 860px) { .ods-grid { grid-template-columns: 1fr; } }
   .ods-grid article { border-top: 2px solid var(--ink); padding-top: 1rem; }
   .ods-grid p { color: var(--ink-soft); }
+
+  .encaje { background: var(--paper); border-block: 1px solid var(--line); }
+  .tabla-encaje { width: 100%; border-collapse: collapse; margin-top: 1.5rem; font-size: var(--step--1); min-width: 720px; }
+  .tabla-encaje th, .tabla-encaje td { text-align: left; vertical-align: top; padding: 0.9rem 1rem; border-bottom: 1px solid var(--line); }
+  .tabla-encaje th { font-weight: 700; border-bottom: 2px solid var(--ink); }
+  .tabla-encaje td:first-child { width: 24%; }
+  .tabla-encaje td:last-child { color: var(--ink-soft); }
+  .comparacion { margin: 0; display: grid; gap: 1.5rem; }
+  .comparacion dt { font-weight: 800; font-size: var(--step-1); margin-bottom: 0.4rem; }
+  .comparacion dd { margin: 0; line-height: 1.6; }
+  .comparacion dd span { font-weight: 700; }
+  .ruta-servicio { background: var(--paper); border-top: 1px solid var(--line); }
+  .fases { list-style: none; counter-reset: fase; padding: 0; margin: 2rem 0 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .fases li { counter-increment: fase; border-top: 3px solid var(--sea); padding-top: 1rem; }
+  .fases li:first-child { border-color: var(--sun); }
+  .fases h3::before { content: counter(fase) ". "; color: var(--sea); }
+  .fases p { color: var(--ink-soft); }
+  @media (max-width: 860px) { .fases { grid-template-columns: 1fr; } }
 </style>

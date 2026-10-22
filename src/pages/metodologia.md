@@ -2,15 +2,16 @@
 layout: ../layouts/Resultado.astro
 etiqueta: Metodología
 titulo: Cómo calculamos el radar
-entradilla: Todo sale de datos públicos, agregados por sección censal, y se puede recalcular en menos de un minuto. Aquí está cada paso, cada umbral y lo que los datos todavía no permiten saber.
+entradilla: Todo sale de datos públicos, agregados por sección censal, y se puede recalcular en minutos. Aquí está cada paso, cada umbral y lo que los datos todavía no permiten saber.
 ---
 
 ## Qué responde
 
 El radar da al Ajuntament datos consistentes para decidir su política sobre la actividad en planta baja: dónde actuar, con qué tipo de actividad y con qué herramienta (ayudas, comunicación, promoción). Responde a lo que pidió el Servei de Promoció de Ciutat i Comerç en la llamada del 20 de octubre:
 
-- **Zonas con potencial:** dónde falta un tipo de actividad para la gente que vive allí.
+- **Zonas con potencial:** dónde falta un tipo de actividad para la gente que vive allí, y dónde se puede extender lo que ya funciona al lado.
 - **Zonas en declive:** barrios donde la demanda se debilita, para intervenir a tiempo.
+- **Afluencia y tipología:** qué atrae gente a cada zona y qué tipo de actividad falta.
 - **Alcance:** toda la actividad en planta baja (comercio, restauración y servicios).
 - **Usuario principal:** el personal técnico municipal. Quien emprende lo usa acompañado por el técnico.
 
@@ -25,7 +26,8 @@ El radar da al Ajuntament datos consistentes para decidir su política sobre la 
 | INE, Atlas de Distribución de Renta de los Hogares (tablas 30896 y 30904) | Renta por persona y hogar, población, edad media, % de mayores de 65 | Sección censal | 2015–2024 |
 | Ajuntament, capa de evolución de población | Población 2008, 2014 y 2020 con límites municipales estables | Sección (agregada) | 2008–2020 |
 | Ajuntament, arbolado municipal | Campo de barrio de 25.062 árboles: da nombre de barrio a cada sección | Punto | Actual |
-| OpenStreetMap | Mercados municipales y grandes superficies (polos de atracción); 419 negocios para medir cuánto recoge el GeoVisor | Punto | Actual |
+| Catastro, edificios INSPIRE (abierto) | Año de construcción y viviendas de 11.902 edificios: aviso de obra nueva | Edificio | Actual (hasta 2025) |
+| OpenStreetMap | Mercados, grandes superficies, estación, paradas de bus, centros educativos y de salud, equipamientos; 419 negocios para medir cuánto recoge el GeoVisor | Punto | Actual |
 
 </div>
 
@@ -93,6 +95,14 @@ Cada sección se clasifica cruzando dos ejes, siempre comparados con el **barrio
 
 **Locales vacíos.** Cuando la técnica marca un local vacío en el prototipo, se lee según el contexto: en una zona que funciona (comercio igual o superior al típico, o un polo cerca) es una **oportunidad de ubicación a revisar**; en una zona en declive o en riesgo, o con 3 o más vacíos, es un **posible síntoma de declive**.
 
+## Paso 4 · Contexto de cada zona
+
+Tres señales más para el criterio de la técnica. **No cambian el estado de ninguna zona**: se enseñan en la ficha para revisarla mejor.
+
+- **Qué atrae gente (afluencia).** Estación de tren más cercana y, a menos de 450 m, paradas de bus, centros educativos, centros de salud, mercados y equipamientos (OpenStreetMap). Es la afluencia que se puede medir con datos abiertos: dónde hay motivos para pasar, no cuánta gente pasa.
+- **Obra nueva.** Viviendas en edificios terminados desde 2023 (Catastro): 851 en toda la ciudad. Si son muchas en una sección, la población real es mayor que la del INE 2024. En una zona "en declive" o "en riesgo", la ficha avisa de que puede no estar perdiendo demanda; en una con potencial, de que el potencial real es mayor. Hoy avisa en 4 secciones. Por ejemplo, una zona del Eixample marcada en riesgo por perder vecinos tiene 199 viviendas nuevas desde 2023: la técnica la revisa antes de decidir.
+- **Extender lo que funciona ("mancha de aceite").** Un tipo de negocio está muy por encima de lo normal en una zona (200 % o más, y 1,5 veces por encima de la actividad general de esa zona) y muy por debajo en una vecina (60 % o menos, a menos de 900 m). Se excluyen como origen las zonas de destino de toda la ciudad, como el centro, porque allí todo está por encima de lo normal. Mide concentración, no crecimiento: con el histórico del censo se vería qué actividad crece.
+
 ## Lo que los datos aún no permiten saber
 
 Cada limitación tiene salida si el Ajuntament conecta datos que ya tiene.
@@ -101,12 +111,15 @@ Cada limitación tiene salida si el Ajuntament conecta datos que ya tiene.
 
 | Limitación | Efecto | Cómo se resuelve |
 | --- | --- | --- |
+| La población es del INE 2024 | Las zonas con obra nueva tienen más vecinos de los que cuenta el radar | Aviso de obra nueva con el Catastro; en el servicio, padrón municipal agregado por sección, actualizado cada mes |
 | El censo se actualiza a pie de calle, una vez al año | Las aperturas y los cierres recientes no aparecen | Conectar las comunicaciones de apertura que ya recibe el Ajuntament |
-| Sin histórico de altas y bajas ni listado de locales vacíos | El declive se estima desde la demanda, no se mide con cierres | Solicitados al Ajuntament; la acción "Marcar local vacío" los genera desde la prospección |
+| Sin histórico de altas y bajas ni listado de locales vacíos | El declive se estima desde la demanda, no se mide con cierres; la "mancha de aceite" mide concentración, no crecimiento | En el piloto, la acción "Marcar local vacío"; en el servicio, el histórico de la prospección |
+| Sin datos abiertos de locales vacíos | No se pueden estimar: el Catastro abierto no distingue locales y OpenStreetMap recoge menos del 10 % de los negocios | Locales vacíos del Ajuntament en el servicio |
+| Afluencia sin recuentos | Se sabe dónde hay motivos para pasar, no cuánta gente pasa | Contadores de peatones y datos de movilidad en el servicio |
 | Hostelería mal cubierta (~37 % de restaurantes de OpenStreetMap sin pareja) | Oportunidades de hostelería poco fiables | Marcadas con confianza baja |
 | Distancia en línea recta y población repartida por superficie | Aproximación a la distancia real andando | Suficiente a escala de barrio; mejorable con la red de calles |
 | Una oportunidad es una hipótesis | Puede explicarla un súper grande, un mercado o calles sin locales | La valida el técnico; las entrevistas a comercios sirven para contrastarla |
-| Periferia: urbanizaciones y polígonos (3 secciones, 4,9 % de la población) | No se analizan: allí la compra es en coche y el modelo mide proximidad a pie | Necesitan un modelo de destino en coche (hoja de ruta) |
+| Periferia: urbanizaciones y polígonos (3 secciones, 4,9 % de la población) | No se analizan: allí la compra es en coche y el modelo mide proximidad a pie. Una de ellas incluye un desarrollo residencial nuevo (264 viviendas desde 2023) | Modelo de destino en coche y padrón para incorporar los nuevos barrios (hoja de ruta) |
 
 </div>
 
@@ -116,4 +129,4 @@ Solo se usan datos abiertos y agregados por sección censal. El radar no trabaja
 
 ## Reproducibilidad
 
-Seis scripts en Python, sin dependencias externas: `mataro_descarga.py` (GeoVisor), `secciones_mataro.py` (secciones del INE), `ine_mataro.py` (renta y población), `barrios_mataro.py` (barrios y población municipal), `radar_v2.py` (oportunidades) y `radar_v3.py` (potencial y declive). El control de cobertura con OpenStreetMap está en `cobertura_osm.py`.
+Siete scripts en Python, sin dependencias externas: `mataro_descarga.py` (GeoVisor), `secciones_mataro.py` (secciones del INE), `ine_mataro.py` (renta y población), `barrios_mataro.py` (barrios y población municipal), `radar_v2.py` (oportunidades), `radar_v3.py` (potencial y declive) y `contexto.py` (afluencia, obra nueva y extensión). El control de cobertura con OpenStreetMap está en `cobertura_osm.py`.
