@@ -22,7 +22,7 @@ autoria: "[nombre de quien lo redacta]"
 
 - **El usuario principal es el Ajuntament**, para decidir su política comercial, no el emprendedor.
 - **El censo se actualiza recorriendo la ciudad una vez al año.** Nuestra primera hipótesis, que el comercio quedaba fuera del censo por la exención del IAE, era falsa.
-- **El comercio básico está cubierto en casi toda la ciudad.** Las oportunidades están en los servicios de proximidad: peluquería, ferretería, reparación…
+- **El comercio básico está cubierto en casi toda la ciudad.** Las oportunidades están en los servicios de proximidad: electrónica y reparación, salud, bazar…
 
 ## Qué cambió en la solución
 

@@ -43,24 +43,27 @@ Para panadería, carnicería y supermercado se coloca una rejilla de puntos cada
 
 **Resultado:** 71 de las 72 secciones urbanas tienen los tres a menos de 400 m. El comercio básico está bien repartido. Las 3 secciones rurales (más de 0,6 km²) quedan fuera del análisis.
 
-## Paso 2 · ¿Qué tipo de negocio falta en cada zona?
+## Paso 2 · ¿Qué tipo de negocio está muy por debajo de lo normal?
 
 Para 12 tipos de proximidad (panadería, carnicería, supermercado, peluquería y estética, salud, hostelería, ferretería, floristería, librería, bazar, electrónica y reparación, óptica) se compara cada zona con lo normal en un barrio de Mataró. Quedan fuera los tipos de destino, como la ropa o la joyería, que se concentran en el centro a propósito, y las farmacias, que están reguladas.
 
-1. **Entorno a pie:** círculo de 400 m alrededor del centro de la sección.
-2. **Vecinos:** la población de cada sección (INE 2024) se reparte en una rejilla de 50 m y se suman los puntos dentro del círculo.
+1. **Entorno a pie, con tres radios:** círculos de 300, 450 y 600 m alrededor del centro de la sección, unos 4, 6 y 8 minutos andando.
+2. **Vecinos:** la población de cada sección (INE 2024) se reparte en una rejilla de 50 m y se suman los puntos dentro de cada círculo.
 3. **Oferta:** negocios de ese tipo dentro del círculo.
-4. **Lo normal:** la mediana, entre todas las secciones, de negocios por vecino. Se usa la mediana y no la media de la ciudad porque el centro concentra negocios y haría parecer deficitario a cualquier barrio.
+4. **Lo normal:** la mediana, entre todas las secciones, de negocios por vecino. Se usa la mediana y no la media de la ciudad porque el centro concentra negocios y haría parecer deficitario a cualquier barrio. Apenas cambia entre radios (panadería: 11,6, 12,0 y 11,6 por cada 10.000 vecinos).
 
 <div class="formula">
 <p><span>esperado</span> = vecinos del entorno × mediana de barrios (negocios ÷ vecinos)</p>
-<p><span>faltan</span> = esperado − oferta</p>
+<p><span>% de lo normal</span> = oferta ÷ esperado</p>
 </div>
 
-5. **Filtro contra el azar:** se calcula la probabilidad de ver esa oferta o menos si la zona fuera normal (distribución de Poisson con media igual al esperado). Solo cuenta si es menor del 5 %.
-6. **Es oportunidad si se cumplen las tres condiciones:** faltan al menos 2 negocios, la oferta es menos de la mitad de lo esperado y la probabilidad de azar es menor del 5 %.
+5. **Filtro contra el azar:** en cada radio, el tipo cuenta si hay menos de la mitad de lo esperado, la diferencia es de al menos 2 negocios y la probabilidad de que sea casualidad (distribución de Poisson) es menor del 5 %.
+6. **Robusto:** se cumple con el radio de 450 m y con al menos uno de los otros dos. Solo los robustos son oportunidad; así no dependen de dónde cae una tienda concreta. Los que salen con menos radios se enseñan como "a confirmar".
+7. **Polos de atracción:** si hay un mercado municipal (Plaça de Cuba, Plaça Gran, Palau) a menos de 450 m, no cuentan panadería ni carnicería; si hay una gran superficie (Alcampo, Mataró Parc), no cuenta supermercado.
 
-**Resultado:** 51 oportunidades en 32 secciones, 40 de ellas con dato fiable. La hostelería se marca con confianza baja porque el GeoVisor no la recoge bien.
+**Resultado:** 38 oportunidades robustas en 25 secciones, 33 con dato fiable, y 70 más a confirmar. La hostelería se marca con confianza baja porque el GeoVisor no la recoge bien.
+
+> "A 450 m a la redonda viven ~12.933 personas y hay 2 bazares, donde un barrio típico de Mataró tendría ~8: el 26 % de lo normal. Se mantiene con radios de 300, 450 y 600 m."
 
 > "En 400 m a la redonda viven ~13.275 personas y hay 0 ferreterías. En un barrio típico de Mataró habría ~6: faltan ~6."
 
@@ -86,7 +89,7 @@ Cada sección se clasifica cruzando dos ejes, siempre comparados con el **barrio
 
 </div>
 
-**Resultado actual:** 9 secciones con potencial, 1 en declive, 6 en riesgo, 54 consolidadas y 2 estables, sin señal clara.
+**Resultado actual:** 8 secciones con potencial, 1 en declive, 6 en riesgo, 54 consolidadas y 3 estables, sin señal clara.
 
 ## Lo que los datos aún no permiten saber
 
