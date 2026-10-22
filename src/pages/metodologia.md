@@ -25,7 +25,7 @@ El radar da al Ajuntament datos consistentes para decidir su política sobre la 
 | INE, Atlas de Distribución de Renta de los Hogares (tablas 30896 y 30904) | Renta por persona y hogar, población, edad media, % de mayores de 65 | Sección censal | 2015–2024 |
 | Ajuntament, capa de evolución de población | Población 2008, 2014 y 2020 con límites municipales estables | Sección (agregada) | 2008–2020 |
 | Ajuntament, arbolado municipal | Campo de barrio de 25.062 árboles: da nombre de barrio a cada sección | Punto | Actual |
-| OpenStreetMap (solo control de calidad) | 419 negocios para medir cuánto recoge el GeoVisor | Punto | Actual |
+| OpenStreetMap | Mercados municipales y grandes superficies (polos de atracción); 419 negocios para medir cuánto recoge el GeoVisor | Punto | Actual |
 
 </div>
 
@@ -41,7 +41,9 @@ El radar da al Ajuntament datos consistentes para decidir su política sobre la 
 
 Para panadería, carnicería y supermercado se coloca una rejilla de puntos cada 50 m dentro de cada sección y se mide la distancia en línea recta al negocio más cercano. El umbral es de 400 m, unos 500 m andando o 6–7 minutos.
 
-**Resultado:** 71 de las 72 secciones urbanas tienen los tres a menos de 400 m. El comercio básico está bien repartido. Las 3 secciones rurales (más de 0,6 km²) quedan fuera del análisis.
+**Resultado:** 71 de las 72 secciones urbanas tienen los tres a menos de 400 m. El comercio básico está bien repartido.
+
+Las 3 secciones de la periferia (urbanizaciones del norte, Veïnat de Mata y Can Quirze al este, y polígonos industriales; más de 0,6 km² cada una) quedan fuera de todo el análisis: suman 6.295 habitantes, el 4,9 % de la población, y allí la compra es en coche, no a pie. **El radar cubre al 95,1 % de los vecinos.**
 
 ## Paso 2 · ¿Qué tipo de negocio está muy por debajo de lo normal?
 
@@ -59,13 +61,11 @@ Para 12 tipos de proximidad (panadería, carnicería, supermercado, peluquería 
 
 5. **Filtro contra el azar:** en cada radio, el tipo cuenta si hay menos de la mitad de lo esperado, la diferencia es de al menos 2 negocios y la probabilidad de que sea casualidad (distribución de Poisson) es menor del 5 %.
 6. **Robusto:** se cumple con el radio de 450 m y con al menos uno de los otros dos. Solo los robustos son oportunidad; así no dependen de dónde cae una tienda concreta. Los que salen con menos radios se enseñan como "a confirmar".
-7. **Polos de atracción:** si hay un mercado municipal (Plaça de Cuba, Plaça Gran, Palau) a menos de 450 m, no cuentan panadería ni carnicería; si hay una gran superficie (Alcampo, Mataró Parc), no cuenta supermercado.
+7. **Polos de atracción:** si hay un mercado municipal (Plaça de Cuba, Plaça Gran, Palau) a menos de 450 m, no cuentan panadería ni carnicería; si hay una gran superficie (Alcampo, Mataró Parc), no cuenta supermercado. El polo anula el hueco de ese tipo, no el interés de la zona: un local vacío cerca de un mercado sigue siendo una oportunidad de ubicación.
 
 **Resultado:** 38 oportunidades robustas en 25 secciones, 33 con dato fiable, y 70 más a confirmar. La hostelería se marca con confianza baja porque el GeoVisor no la recoge bien.
 
 > "A 450 m a la redonda viven ~12.933 personas y hay 2 bazares, donde un barrio típico de Mataró tendría ~8: el 26 % de lo normal. Se mantiene con radios de 300, 450 y 600 m."
-
-> "En 400 m a la redonda viven ~13.275 personas y hay 0 ferreterías. En un barrio típico de Mataró habría ~6: faltan ~6."
 
 ## Paso 3 · ¿Potencial o declive?
 
@@ -78,7 +78,7 @@ Cada sección se clasifica cruzando dos ejes, siempre comparados con el **barrio
 - Si la población está estable, decide la renta por persona, pero solo si se aparta más de 10 puntos del barrio típico. La renta es nominal y más ruidosa.
 - En las 14 secciones cuyos límites cambió el INE se usa la serie municipal 2008–2020, que no tiene ese problema.
 
-**Actividad.** Suma de negocios de proximidad del entorno frente a lo esperado (paso 2, sin hostelería). Por debajo del 80 % se considera **poco comercio**.
+**Actividad.** Suma de negocios de proximidad a 450 m frente a lo esperado (paso 2, sin hostelería). Por debajo del 80 % se considera **poco comercio**.
 
 <div class="table-scroll">
 
@@ -90,6 +90,8 @@ Cada sección se clasifica cruzando dos ejes, siempre comparados con el **barrio
 </div>
 
 **Resultado actual:** 8 secciones con potencial, 1 en declive, 6 en riesgo, 54 consolidadas y 3 estables, sin señal clara.
+
+**Locales vacíos.** Cuando la técnica marca un local vacío en el prototipo, se lee según el contexto: en una zona que funciona (comercio igual o superior al típico, o un polo cerca) es una **oportunidad de ubicación a revisar**; en una zona en declive o en riesgo, o con 3 o más vacíos, es un **posible síntoma de declive**.
 
 ## Lo que los datos aún no permiten saber
 
@@ -104,6 +106,7 @@ Cada limitación tiene salida si el Ajuntament conecta datos que ya tiene.
 | Hostelería mal cubierta (~37 % de restaurantes de OpenStreetMap sin pareja) | Oportunidades de hostelería poco fiables | Marcadas con confianza baja |
 | Distancia en línea recta y población repartida por superficie | Aproximación a la distancia real andando | Suficiente a escala de barrio; mejorable con la red de calles |
 | Una oportunidad es una hipótesis | Puede explicarla un súper grande, un mercado o calles sin locales | La valida el técnico; las entrevistas a comercios sirven para contrastarla |
+| Periferia: urbanizaciones y polígonos (3 secciones, 4,9 % de la población) | No se analizan: allí la compra es en coche y el modelo mide proximidad a pie | Necesitan un modelo de destino en coche (hoja de ruta) |
 
 </div>
 
