@@ -4,10 +4,9 @@ resultado: 10
 fase: Transversal
 titulo: Cómo usamos la IA
 entradilla: La IA nos permitió construir en una semana lo que habría llevado un mes. Cada cifra la calculan scripts que se pueden volver a ejecutar, y cada error que cometió lo detectamos comprobando contra la fuente.
-autoria: "[nombre de quien lo redacta]"
 ---
 
-## Herramientas y usos
+## Herramientas y usos de la IA
 
 <div class="table-scroll">
 
@@ -17,8 +16,9 @@ autoria: "[nombre de quien lo redacta]"
 | Claude (Anthropic) | Scripts en Python para descargar y cruzar datos abiertos (GeoVisor, INE, Catastro, OpenStreetMap) | Totales contra la fuente oficial: la población de las 75 secciones suma lo mismo que Mataró en los 10 años |
 | Claude (Anthropic) | Diseño del método del radar y revisión crítica de cada versión | Cada cambio de método se ejecutó con datos reales y se revisaron los resultados zona a zona |
 | Claude (Anthropic) | Código de la web (Astro) y del prototipo (React) | Revisión visual en escritorio y móvil, y pruebas de cada acción del prototipo |
-| [Generador del logo] | Logotipo de ConnectMA | — |
-| [Completar: otras herramientas del equipo] | | |
+| Chat GPT | Logotipo de ConnectMA | — |
+| Claude (Anthropic) | Borradores de mapas, ideas, matriz, EcoCanvas e informe | Contraste con transcripciones, datos y web |
+| Claude (Anthropic) | Creación del vídeo | Creación de clips cortos |
 
 </div>
 
@@ -45,4 +45,4 @@ Lo que hace fiable el radar no es la IA, es haber comprobado cada paso. Estos so
 
 ## Qué aprendimos
 
-La IA acelera mucho el trabajo técnico, pero no sabe qué pregunta hacer ni cuándo un resultado no tiene sentido. El valor estuvo en preguntar al Ajuntament, mirar los datos zona a zona y desconfiar de cada cifra hasta comprobarla.
+La IA acelera mucho el trabajo técnico, pero no sabe qué pregunta hacer ni cuándo un resultado no tiene sentido. El valor estuvo en preguntar al Ayuntamiento, mirar los datos zona a zona y desconfiar de cada cifra hasta comprobarla.

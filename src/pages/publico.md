@@ -4,7 +4,6 @@ resultado: 3
 fase: Comprensión
 titulo: Para quién lo hacemos?
 entradilla: "Público prioritario: La técnica de Comercio que decide dónde van las ayudas. Público secundario: quien quiere abrir un negocio en Mataró."
-autoria: "[nombre de quien lo redacta]"
 ---
 
 ## Técnica de Comercio

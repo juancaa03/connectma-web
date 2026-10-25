@@ -4,7 +4,6 @@ resultado: 4 i 5
 fase: Ideación
 titulo: 10 posibles soluciones
 entradilla: Generamos al menos diez soluciones al reto antes de quedarnos con una.
-autoria: "[nombre de quien lo redacta]"
 ---
 
 <div class="table-scroll">

@@ -4,7 +4,6 @@ resultado: 2
 fase: Comprensión
 titulo: Redefinimos el reto
 entradilla: Tras hablar con el área de Comercio y analizar sus datos, el problema no era la falta de datos, sino cómo se decide en ellos.
-autoria: "[nombre de quien lo redacta]"
 ---
 
 ## El reto en una frase
@@ -28,4 +27,4 @@ autoria: "[nombre de quien lo redacta]"
 
 Pasamos de "un mapa de comercios más bonito" a **un radar que marca zonas con potencial y en declive, y propone una acción para cada una**.
 
-<div class="pendiente">Pendiente del equipo: añadir fuentes de la mini-investigación y frases literales de las entrevistas.</div>
+

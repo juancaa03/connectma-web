@@ -9,7 +9,7 @@ const iniciales = (n) => n.replace(/[\[\]]/g, "").split(" ").map((p) => p[0]).sl
     <div class="wrap">
       <p class="res-n">Resultado 1</p>
       <h1>ConnectMA · {sitio.equipo}</h1>
-      <p class="lead">Estudiantes del Màster en Emprenedoria i Innovació de TecnoCampus, trabajando el reto del Ajuntament de Mataró.</p>
+      <p class="lead">Estudiantes de TecnoCampus, trabajando el reto del Ajuntament de Mataró.</p>
 
       {fotoEquipo
         ? <img class="foto-equipo" src={fotoEquipo} alt="El equipo de ConnectMA" />
@@ -29,8 +29,7 @@ const iniciales = (n) => n.replace(/[\[\]]/g, "").split(" ").map((p) => p[0]).sl
         ))}
       </ul>
 
-      <h2 class="val-t">Cómo trabajamos</h2>
-      <ul class="valores">{valores.map((v) => <li>{v}</li>)}</ul>
+
     </div>
   </section>
 </Base>
@@ -73,4 +72,13 @@ const iniciales = (n) => n.replace(/[\[\]]/g, "").split(" ").map((p) => p[0]).sl
   .val-t { font-size: var(--step-2); margin-top: 4rem; }
   .valores { display: flex; flex-wrap: wrap; gap: 0.6rem; list-style: none; padding: 0; }
   .valores li { border: 2px solid var(--ink); border-radius: 999px; padding: 0.4em 1em; font-weight: 600; }
+</style>
+
+<style>
+  /* ...lo que ya había... */
+
+  .personas li img {
+    object-fit: cover;
+    object-position: center top;
+  }
 </style>
