@@ -3,17 +3,10 @@ export const fotoEquipo = "/imagenes/grupal.jpeg";
 export const valores = ["[valor 1]", "[valor 2]", "[valor 3]"];
 export const integrantes = [
   {
-    nombre: "Gabriel García",
-    rol: "Responsable de análisis de mercado y segmentación",
-    aporta: "Ha liderado el análisis de mercado y la segmentación de usuarios para el proyecto.",
-    foto: "/imagenes/gabriel.jpeg",
-    linkedin: "",
-  },
-  {
-    nombre: "Juan Carlo Medinilla",
-    rol: "Responsable técnico y de producto ",
-    aporta: "Ha liderado el desarrollo de la herramienta y la parte de IA que organiza y analiza los datos del Ajuntament.",
-    foto: "/imagenes/juanca.jpeg",
+    nombre: "Nora Martín",
+    rol: "Responsable de contenido digital y redes sociales",
+    aporta: "Ha creado el contenido para las redes sociales y ha gestionado la presencia digital del proyecto.",
+    foto: "/imagenes/nora.jpeg",
     linkedin: "",
   },
   {
@@ -24,17 +17,24 @@ export const integrantes = [
     linkedin: "",
   },
   {
-    nombre: "Nora Martín",
-    rol: "Responsable de contenido digital y redes sociales",
-    aporta: "Ha creado el contenido para las redes sociales y ha gestionado la presencia digital del proyecto.",
-    foto: "/imagenes/nora.jpeg",
+    nombre: "Damariz Maco",
+    rol: "Responsable de planificación, organización y liderazgo",
+    aporta: "Ha realizado la investigación necesaria para entender las necesidades de los usuarios y ha contribuido a la definición del producto.",
+    foto: "/imagenes/damariz.jpeg",
     linkedin: "",
   },
   {
-    nombre: "Damariz Maco",
-    rol: "Analista de usuarios e investigación",
-    aporta: "Ha realizado la investigación necesaria para entender las necesidades de los usuarios y ha contribuido a la definición del producto.",
-    foto: "/imagenes/damariz.jpeg",
+    nombre: "Juan Carlos Medinilla",
+    rol: "Responsable técnico y de producto ",
+    aporta: "Ha liderado el desarrollo de la herramienta y la parte de IA que organiza y analiza los datos del Ajuntament.",
+    foto: "/imagenes/juanca.jpeg",
+    linkedin: "",
+  },
+  {
+    nombre: "Gabriel García",
+    rol: "Responsable de análisis de mercado y segmentación",
+    aporta: "Ha liderado el análisis de mercado y la segmentación de usuarios para el proyecto.",
+    foto: "/imagenes/gabriel.jpeg",
     linkedin: "",
   },
 ];
