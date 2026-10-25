@@ -3,24 +3,24 @@ import Base from "../layouts/Base.astro";
 import Mapa from "../components/Mapa.astro";
 import { sitio, resultados } from "../data/sitio.js";
 
-// Tres fichas reales del radar v3 (22/10/2026)
+// Tres fichas reales del radar (25/10/2026)
 const fichas = [
   {
     estado: "POTENCIAL", barrio: "Eixample", seccion: "0812102011",
-    dato: "Gana vecinos: +26 puntos sobre el barrio típico.",
-    detalle: "Para unos 12.900 vecinos a 450 m hay una sola librería y papelería, el 15\u00a0% de lo normal, y los bazares están al 27\u00a0%. Y llegan más vecinos: 93 viviendas nuevas desde 2023.",
+    dato: "Una librería para 12.900 vecinos.",
+    detalle: "Lo normal serían unas 7: tiene el 15\u00a0% de lo normal. Y la zona gana vecinos, con obra nueva desde 2023.",
     accion: "Generar informe para emprendedor",
   },
   {
     estado: "EN RIESGO", barrio: "Peramàs", seccion: "0812106013",
     dato: "Pierde vecinos: −6\u00a0% en nueve años.",
-    detalle: "Hoy tiene más comercio que un barrio típico (122\u00a0%), pero cada año con menos clientes alrededor. Es donde hay que vigilar los locales que cierran.",
+    detalle: "Hoy tiene más comercio que una zona típica (122\u00a0%), pero cada año con menos clientes alrededor. Es donde hay que vigilar los locales que cierran.",
     accion: "Marcar local vacío",
   },
   {
     estado: "DECLIVE", barrio: "Cerdanyola", seccion: "0812105021",
     dato: "Pierde vecinos: −11\u00a0% en nueve años.",
-    detalle: "Y ya solo tiene el 59\u00a0% del comercio de un barrio típico, con la salud al 28\u00a0% de lo normal. Candidata clara a las ayudas de reactivación.",
+    detalle: "Ya solo tiene el 59\u00a0% del comercio de una zona típica, y desde 2023 han cerrado 8 de sus 21 negocios registrados (38\u00a0%, frente al 29\u00a0% de una zona típica). Candidata clara a las ayudas de reactivación.",
     accion: "Proponer para Aixequem Persianes",
   },
 ];
@@ -31,7 +31,7 @@ const fichas = [
       <div class="hero-txt">
         <p class="contexto">Reto del Ajuntament de Mataró para el TecnoChallenge 2026</p>
         <h1>Dónde le falta comercio a Mataró, y dónde lo está perdiendo.</h1>
-        <p class="lead">Cruzamos el censo de actividades del Ajuntament con la población y la renta del INE. Así marcamos, sección a sección, qué zonas tienen potencial y cuáles están en riesgo, y qué hacer en cada una.</p>
+        <p class="lead">Cruzamos el censo de actividades y el registro de aperturas y cierres del Ajuntament con la población y la renta del INE. Así marcamos, zona a zona, qué falta, dónde se cierra más y qué locales están vacíos, y qué puede hacer el Ajuntament en cada una.</p>
         <div class="ctas">
           <a class="btn" href={sitio.appUrl}>Probar el prototipo</a>
           <a class="btn ghost" href="/solucion">Ver la solución</a>
@@ -45,8 +45,9 @@ const fichas = [
     <div class="wrap fuentes-grid">
       <p><strong class="num">4.819</strong> actividades en planta baja del censo municipal</p>
       <p><strong class="num">95 %</strong> de los vecinos analizados, en 72 zonas, con 10 años de población y renta del INE</p>
-      <p><strong class="num">11.902</strong> edificios del Catastro para detectar obra nueva</p>
-      <p><strong class="num">11</strong> oportunidades de negocio que superan todas las comprobaciones</p>
+      <p><strong class="num">4.315</strong> negocios del registro de prospección del Ajuntament, con fecha de apertura y cierre</p>
+      <p><strong class="num">10</strong> oportunidades de negocio que superan todas las comprobaciones</p>
+      <p><strong class="num">465</strong> locales cerrados desde 2023 sin actividad nueva</p>
       <p><strong>0</strong> datos personales: todo agregado por sección (RGPD)</p>
     </div>
   </section>
@@ -60,7 +61,7 @@ const fichas = [
       <ul class="hoy">
         <li><strong>Sin tendencia.</strong> El GeoVisor muestra qué hay hoy, no si la zona gana o pierde vecinos.</li>
         <li><strong>Sin comparación.</strong> Nadie dice si a un barrio le faltan panaderías o le sobran.</li>
-        <li><strong>Sin locales vacíos.</strong> No hay un dato abierto de locales vacíos: el Ajuntament tiene información de trabajo, pero no es pública.</li>
+        <li><strong>Datos sin cruzar.</strong> El Ajuntament registra qué abre y qué cierra, pero nadie lo cruza con vecinos y renta para decidir dónde actuar.</li>
       </ul>
     </div>
   </section>
@@ -71,18 +72,57 @@ const fichas = [
       <ol class="pasos">
         <li>
           <h3>Juntamos datos abiertos</h3>
-          <p>Censo de actividades del GeoVisor, población y renta del INE (2015–2024), edificios del Catastro y capas municipales de población y barrios.</p>
+          <p>Censo de actividades del GeoVisor, registro de prospección del Ajuntament (aperturas y cierres), población y renta del INE (2015–2024), Catastro y OpenStreetMap.</p>
         </li>
         <li>
           <h3>Medimos cada zona</h3>
-          <p>Para cada sección miramos los vecinos y los negocios a 300, 450 y 600 m a pie y los comparamos con barrios parecidos de Mataró: sin contar el centro y, cuando importa, con la misma renta.</p>
+          <p>Para cada zona contamos los vecinos y los negocios a 300, 450 y 600 m a pie y los comparamos con la zona típica de Mataró, sin contar el centro. En los negocios que dependen de la renta, con zonas de renta parecida.</p>
         </li>
         <li>
           <h3>Proponemos qué hacer</h3>
-          <p>Cada zona sale como potencial, en riesgo, en declive o consolidada, con una acción concreta para el Ajuntament.</p>
+          <p>Cada zona sale como potencial, en riesgo, en declive o bien servida, con una acción concreta para el Ajuntament.</p>
         </li>
       </ol>
       <p><a href={sitio.metodologiaUrl}>Leer la metodología completa</a>, con fórmulas, fuentes y límites de los datos.</p>
+    </div>
+  </section>
+
+  <section class="decisiones" id="decisiones">
+    <div class="wrap">
+      <h2>Tres decisiones que el Ajuntament puede tomar el lunes</h2>
+      <p class="lead">Cada una sale de cruzar sus propios datos. Todas se pueden comprobar en el prototipo.</p>
+      <div class="dec-grid">
+        <article>
+          <p class="dec-n num">1 de cada 3</p>
+          <h3>Llevar las ayudas a donde más se cierra</h3>
+          <p>En las zonas de renta más baja ha cerrado 1 de cada 3 negocios registrados desde 2023 (32&nbsp;%). En las de renta más alta, menos de 1 de cada 4 (23&nbsp;%).</p>
+          <p class="dec-accion">El RetailLab, premiado en 2024, trabaja el centro. Los datos dicen dónde llevarlo después, junto a Aixequem Persianes y la OME.</p>
+        </article>
+        <article>
+          <p class="dec-n num">465</p>
+          <h3>Una bolsa de locales para quien emprende</h3>
+          <p>Locales cerrados desde 2023 sin ningún negocio nuevo en la misma dirección, sacados del registro de prospección. Con qué había antes y cuándo cerró.</p>
+          <p class="dec-accion">El mapa de locales vacíos que pide el plan de usos de plantas bajas, ya empezado.</p>
+        </article>
+        <article>
+          <p class="dec-n num">11</p>
+          <h3>Una segunda tienda para el comercio que ya funciona</h3>
+          <p>Zonas donde un tipo de negocio funciona en la de al lado y aquí casi no hay.</p>
+          <p class="dec-accion">Apoyar al comercio local que ya funciona a crecer, no solo a quien empieza de cero.</p>
+        </article>
+      </div>
+      <div class="impacto">
+        <p><strong class="num">~260</strong> negocios de proximidad cierran cada año en Mataró: unas 150 tiendas, 60 peluquerías y otros servicios personales y 50 bares y restaurantes (registro de prospección, 2023–2025; sin contar oficinas, bancos ni asociaciones).</p>
+        <p><strong class="num">10 negocios salvados</strong> son unos 18 empleos y 3,4 M€ de facturación al año (INE, empresas de comercio con menos de 10 trabajadores).</p>
+      </div>
+      <h3 class="ind-t">Cómo sabremos si funciona</h3>
+      <ul class="indicadores">
+        <li><strong>Rotación:</strong> % de cierres en las zonas priorizadas, medido cada año con el registro de prospección.</li>
+        <li><strong>Locales reocupados:</strong> de los locales vacíos listados, cuántos vuelven a tener actividad en 12 meses.</li>
+        <li><strong>Supervivencia:</strong> negocios abiertos con un informe de ConnectMA que siguen abiertos a los 2 años, frente a la media.</li>
+        <li><strong>Uso:</strong> informes entregados por la OME y Comerç, y locales marcados por las técnicas.</li>
+      </ul>
+      <p><a class="btn" href={sitio.appUrl}>Verlo en el prototipo</a></p>
     </div>
   </section>
 
@@ -103,6 +143,19 @@ const fichas = [
     </div>
   </section>
 
+  <section class="futuro" id="futuro">
+    <div class="wrap">
+      <h2>Lo siguiente: de leer datos a proponer políticas</h2>
+      <p class="lead">Hoy estas tres decisiones las hemos sacado nosotros, cruzando datos a mano con el prototipo. Con el registro de prospección actualizado al día y Jev, la herramienta las propondría sola, ordenadas por prioridad y viabilidad.</p>
+      <p><a href="/futuro">Ver la hoja de ruta completa</a></p>
+      <ul class="hoy">
+        <li><strong>Datos al día.</strong> El registro de aperturas y cierres conectado en continuo, no una foto al año.</li>
+        <li><strong>Jev ordena.</strong> Las reglas explican cada zona, Jev prioriza las acciones y el histórico de cierres dice si acierta.</li>
+        <li><strong>Más capas.</strong> Zonas inundables del Ministerio, plan de usos de plantas bajas y referencia a elegir: toda la ciudad o zonas parecidas.</li>
+      </ul>
+    </div>
+  </section>
+
   <section class="ruta">
     <div class="wrap">
       <h2>Nuestro proceso</h2>
@@ -120,7 +173,7 @@ const fichas = [
   <section class="video" id="video">
     <div class="wrap">
       <h2>La solución en dos minutos</h2>
-      <div class="pendiente">El vídeo (resultado 8) se publica el domingo 25 de octubre.</div>
+      <p><a class="btn" href="/video">Ver el vídeo</a></p>
     </div>
   </section>
 
@@ -185,4 +238,19 @@ const fichas = [
   .final .lead { color: #e6f6fd; }
   .final .btn { background: #fff; color: var(--ink); border-color: #fff; margin-top: 1rem; }
   .final .btn:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+  .decisiones { background: var(--paper); border-block: 1px solid var(--line); }
+  .dec-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; margin-top: 2rem; }
+  @media (max-width: 960px) { .dec-grid { grid-template-columns: 1fr; } }
+  .dec-grid article { background: #fff; border-top: 6px solid var(--sea); padding: 1.5rem; display: flex; flex-direction: column; }
+  .dec-n { font-size: var(--step-2); font-weight: 800; color: var(--sea); margin: 0 0 0.4rem; line-height: 1; }
+  .dec-grid p { color: var(--ink-soft); }
+  .dec-accion { margin: auto 0 0; padding-top: 1rem; border-top: 1px solid var(--line); color: var(--ink) !important; font-weight: 700; }
+  .impacto { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem 2.5rem; margin: 2.5rem 0 1.5rem; padding: 1.5rem; background: var(--ink); color: #dbe7f0; }
+  @media (max-width: 760px) { .impacto { grid-template-columns: 1fr; } }
+  .impacto p { margin: 0; }
+  .impacto strong { display: block; color: #fff; font-size: var(--step-2); font-weight: 800; margin-bottom: 0.2rem; }
+  .ind-t { margin-top: 1.5rem; }
+  .indicadores { padding-left: 1.2rem; }
+  .indicadores li { margin-bottom: 0.5rem; }
 </style>

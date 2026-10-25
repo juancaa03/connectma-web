@@ -1,0 +1,31 @@
+---
+import Base from "../layouts/Base.astro";
+import { sitio } from "../data/sitio.js";
+
+// Pon UNA de las dos:
+// 1) Enlace de YouTube "insertar" (Compartir > Insertar), p. ej. "https://www.youtube.com/embed/XXXXXXXX"
+const youtube = "";
+// 2) O el archivo de vídeo en public/assets/video.mp4 (se usa si youtube está vacío)
+const mp4 = "/assets/video.mp4";
+---
+<Base titulo="Vídeo" descripcion="ConnectMA explicado en dos minutos.">
+  <section class="video-pag">
+    <div class="wrap">
+      <p class="res-n">Resultado 8</p>
+      <h1>ConnectMA en dos minutos</h1>
+      <div class="marco">
+        {youtube
+          ? <iframe src={youtube} title="Vídeo de ConnectMA" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          : <video src={mp4} controls playsinline preload="metadata"></video>}
+      </div>
+      <p><a class="btn" href={sitio.appUrl}>Probar el prototipo</a></p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .video-pag { padding-top: clamp(2rem, 5vw, 4rem); }
+  .res-n { font-weight: 600; color: var(--sea); }
+  .marco { position: relative; aspect-ratio: 16 / 9; background: var(--ink); margin: 1.5rem 0 2rem; }
+  .marco iframe, .marco video { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+</style>
