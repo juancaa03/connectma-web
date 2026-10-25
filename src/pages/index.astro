@@ -21,7 +21,7 @@ const fichas = [
     estado: "DECLIVE", barrio: "Cerdanyola", seccion: "0812105021",
     dato: "Pierde vecinos: −11\u00a0% en nueve años.",
     detalle: "Ya solo tiene el 59\u00a0% del comercio de una zona típica, y desde 2023 han cerrado 8 de sus 21 negocios registrados (38\u00a0%, frente al 29\u00a0% de una zona típica). Candidata clara a las ayudas de reactivación.",
-    accion: "Proponer para Aixequem Persianes",
+    accion: "Priorizar para ayudas de reactivación",
   },
 ];
 ---
@@ -253,4 +253,6 @@ const fichas = [
   .ind-t { margin-top: 1.5rem; }
   .indicadores { padding-left: 1.2rem; }
   .indicadores li { margin-bottom: 0.5rem; }
+  .lead, .pasos p, .hoy li, .dec-grid p, .ficha p, .impacto p, .indicadores li { text-align: justify; hyphens: auto; }
+  @media (max-width: 600px) { .lead, .pasos p, .hoy li, .dec-grid p, .ficha p, .impacto p, .indicadores li { text-align: left; } }
 </style>
