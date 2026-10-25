@@ -8,11 +8,11 @@ const youtube = "";
 // 2) O el archivo de vídeo en public/assets/video.mp4 (se usa si youtube está vacío)
 const mp4 = "/assets/video.mp4";
 ---
-<Base titulo="Vídeo" descripcion="ConnectMA explicado en dos minutos.">
+<Base titulo="Vídeo" descripcion="ConnectMA explicado en 2 minutos.">
   <section class="video-pag">
     <div class="wrap">
       <p class="res-n">Resultado 8</p>
-      <h1>ConnectMA en dos minutos</h1>
+      <h1>ConnectMA en 2'</h1>
       <div class="marco">
         {youtube
           ? <iframe src={youtube} title="Vídeo de ConnectMA" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -26,6 +26,6 @@ const mp4 = "/assets/video.mp4";
 <style>
   .video-pag { padding-top: clamp(2rem, 5vw, 4rem); }
   .res-n { font-weight: 600; color: var(--sea); }
-  .marco { position: relative; aspect-ratio: 16 / 9; background: var(--ink); margin: 1.5rem 0 2rem; }
+    .marco { position: relative; aspect-ratio: 16 / 9; background: var(--ink); margin: 1.5rem 0 2rem; border-radius: 16px; overflow: hidden; }
   .marco iframe, .marco video { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 </style>
