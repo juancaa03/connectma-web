@@ -16,8 +16,10 @@ export const paginas = [
   { href: "/ideas", titulo: "Ideas", resultado: 4 },
   { href: "/solucion", titulo: "Solución", resultado: "5–7" },
   { href: "/diseño", titulo: "Diseño", resultado: 6 },
+  { href: "/futuro", titulo: "Futuro", resultado: 7 },
   { href: "/video", titulo: "Vídeo", resultado: 8 },
   { href: "/ia", titulo: "IA", resultado: 10 },
+  
 ];
 
 // Los 10 resultados (PDF del día 1). estado: "hecho" | "en curso" | "pendiente"

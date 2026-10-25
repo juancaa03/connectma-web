@@ -1,0 +1,79 @@
+---
+import Base from "../layouts/Base.astro";
+import { sitio } from "../data/sitio.js";
+---
+<Base titulo="Futuro" descripcion="De leer datos a proponer políticas: lo siguiente de ConnectMA.">
+  <section class="intro-f">
+    <div class="wrap">
+      <h1>De leer datos a proponer políticas</h1>
+      <p class="lead">Hoy las políticas las sacamos nosotros, cruzando datos con el prototipo. Con los datos del Ajuntament conectados al día y Jev, ConnectMA las propondría sola, ordenadas por prioridad y viabilidad.</p>
+    </div>
+  </section>
+
+  <section class="ejemplo">
+    <div class="wrap dos">
+      <div>
+        <h2>Un ejemplo de hoy, hecho a mano</h2>
+        <p>Cruzando el registro de prospección del Ajuntament con la renta del INE vimos que, desde 2023, en las zonas de renta más baja ha cerrado <strong>1 de cada 3</strong> negocios registrados (32&nbsp;%), y en las de renta más alta, <strong>menos de 1 de cada 4</strong> (23&nbsp;%). Palau-Escorxador (36&nbsp;%), Cerdanyola (34&nbsp;%) y Rocafonda (29&nbsp;%) están por encima de la media de Mataró (26,5&nbsp;%).</p>
+        <p>De ahí sale una política: llevar el RetailLab, Aixequem Persianes y el acompañamiento de la OME primero a esas zonas, y medir si baja la rotación.</p>
+        <p class="nota">Es una relación, no una causa: por eso el siguiente paso es medir el efecto.</p>
+      </div>
+      <div class="manana">
+        <h3>Mañana, automático</h3>
+        <ol>
+          <li><strong>Detecta</strong> el patrón: dónde se cierra más, qué falta, qué locales quedan vacíos.</li>
+          <li><strong>Propone</strong> la política y la herramienta del Ajuntament que encaja.</li>
+          <li><strong>Ordena</strong> por prioridad y viabilidad.</li>
+          <li><strong>Mide</strong> con el histórico de cierres si funcionó.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="hoja">
+    <div class="wrap">
+      <h2>Hoja de ruta</h2>
+      <ol class="fases">
+        <li>
+          <h3>Datos al día</h3>
+          <p>El registro de aperturas y cierres y el padrón agregado conectados en continuo, no una foto al año.</p>
+        </li>
+        <li>
+          <h3>Jev ordena</h3>
+          <p>Las reglas explican cada zona, Jev prioriza las acciones y el histórico de cierres dice si acierta.</p>
+        </li>
+        <li>
+          <h3>Más capas</h3>
+          <p>Zonas inundables del Ministerio, plan de usos de plantas bajas y referencia a elegir: toda la ciudad o zonas parecidas.</p>
+        </li>
+      </ol>
+      <h2 class="ind-t">Cómo sabremos si funciona</h2>
+      <ul class="indicadores">
+        <li><strong>Rotación:</strong> % de cierres en las zonas priorizadas, medido cada año con el registro de prospección.</li>
+        <li><strong>Locales reocupados:</strong> de los locales vacíos listados, cuántos vuelven a tener actividad en 12 meses.</li>
+        <li><strong>Supervivencia:</strong> negocios abiertos con un informe de ConnectMA que siguen abiertos a los 2 años, frente a la media.</li>
+        <li><strong>Uso:</strong> informes entregados por la OME y Comerç, y locales marcados por las técnicas.</li>
+      </ul>
+      <p><a class="btn" href={sitio.appUrl}>Ver los datos de hoy en el prototipo</a></p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .intro-f { padding-top: clamp(2rem, 5vw, 4rem); }
+  .ejemplo { background: var(--paper); border-block: 1px solid var(--line); }
+  .dos { display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+  @media (max-width: 860px) { .dos { grid-template-columns: 1fr; } }
+  .nota { color: var(--ink-soft); font-size: var(--step--1); }
+  .manana { background: #fff; border-top: 6px solid var(--sea); padding: 1.5rem; }
+  .manana ol { padding-left: 1.2rem; margin: 0; }
+  .manana li { margin-bottom: 0.6rem; }
+  .fases { list-style: none; counter-reset: fase; padding: 0; margin: 2rem 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .fases li { counter-increment: fase; border-top: 3px solid var(--sea); padding-top: 1rem; }
+  .fases h3::before { content: counter(fase) ". "; color: var(--sea); }
+  .fases p { color: var(--ink-soft); }
+  @media (max-width: 860px) { .fases { grid-template-columns: 1fr; } }
+  .ind-t { margin-top: 2.5rem; }
+  .indicadores { padding-left: 1.2rem; }
+  .indicadores li { margin-bottom: 0.5rem; }
+</style>
