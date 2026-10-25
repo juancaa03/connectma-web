@@ -5,7 +5,7 @@ import { sitio } from "../data/sitio.js";
 
 const acciones = [
   { estado: "POTENCIAL", titulo: "Generar informe para emprendedor", texto: "Un PDF de una página con los vecinos de la zona, su tendencia y los tipos de negocio por debajo de lo normal. El técnico lo entrega en la primera cita, en lugar de mandar al emprendedor al GeoVisor." },
-  { estado: "DECLIVE", titulo: "Proponer para Aixequem Persianes", texto: "Las zonas en declive o en riesgo pasan a una lista de candidatas para las ayudas del año, que hoy se concentran en el centro." },
+  { estado: "DECLIVE", titulo: "Priorizar dónde ayudar", texto: "La ficha señala las zonas que pierden vecinos o donde cierran más negocios que en una zona típica. El Ajuntament decide a cuáles lleva primero sus programas de reactivación." },
   { estado: "EN RIESGO", titulo: "Marcar local vacío", texto: "Cada ficha ya lista los locales cerrados desde 2023 sin actividad nueva, sacados del registro de prospección. La técnica añade los que ve a pie de calle." },
   { estado: "CONSOLIDADA", titulo: "Asesor por tipo de negocio", texto: "Quien emprende indica qué negocio quiere abrir y, si quiere, en qué barrio. Recibe las zonas donde falta, el motivo y los locales cerrados cercanos. No se guarda nada." },
 ];
@@ -72,7 +72,7 @@ const acciones = [
         <table class="tabla-encaje">
           <thead><tr><th>Lo que pidieron</th><th>En el prototipo (hoy)</th><th>En el servicio (datos conectados)</th></tr></thead>
           <tbody>
-            <tr><td><strong>Decidir la política comercial</strong> desde el Ajuntament</td><td>Bandeja priorizada; cada zona termina en una acción: informe, Aixequem Persianes o marcar local vacío</td><td>Seguimiento año a año del efecto de cada ayuda</td></tr>
+            <tr><td><strong>Decidir la política comercial</strong> desde el Ajuntament</td><td>Bandeja priorizada; cada zona termina en una acción: informe para quien emprende, marcar local vacío o vigilar; las zonas con más cierres, señaladas como prioridad</td><td>Seguimiento año a año del efecto de cada ayuda</td></tr>
             <tr><td><strong>Tipología:</strong> qué actividad falta y dónde</td><td>Tipos de proximidad muy por debajo de lo normal, confirmados con tres radios, con el registro de prospección y descontando mercados y grandes superficies</td><td>Censo vivo con las aperturas que ya comunica cada negocio</td></tr>
             <tr><td><strong>Zonas con potencial</strong> y la "mancha de aceite"</td><td>Zonas que ganan vecinos con poca oferta, y tipos que funcionan en la zona de al lado y aquí casi no hay</td><td>Con el histórico de la prospección: qué actividad está <em>creciendo</em>, no solo dónde se concentra</td></tr>
             <tr><td><strong>Zonas en declive:</strong> calles que se vacían</td><td>Cierres reales desde 2023 del registro de prospección y aviso de rotación alta; 465 locales cerrados sin actividad nueva; aviso de obra nueva (Catastro) para no confundir una zona en obras con una que se vacía</td><td>Cierres al día y padrón actualizado cada mes</td></tr>
@@ -103,7 +103,7 @@ const acciones = [
       <ol class="fases">
         <li>
           <h3>Piloto: datos públicos</h3>
-          <p>Lo que hay hoy en el prototipo: censo de actividades del GeoVisor, registro de prospección del Ajuntament, INE, Catastro y OpenStreetMap. Se puede probar con Comerç en la próxima convocatoria de Aixequem Persianes.</p>
+          <p>Lo que hay hoy en el prototipo: censo de actividades del GeoVisor, registro de prospección del Ajuntament, INE, Catastro y OpenStreetMap. Se puede probar con Comerç y la OME desde mañana.</p>
         </li>
         <li>
           <h3>Servicio: datos que el Ajuntament ya tiene</h3>
@@ -149,20 +149,7 @@ const acciones = [
     </div>
   </section>
 
-  <section class="pendientes">
-    <div class="wrap dos">
-      <div id="ecocanvas">
-        <p class="res-n">Resultado 6</p>
-        <h2>EcoCanvas</h2>
-        <div class="pendiente">Se completa el sábado 24 de octubre.</div>
-      </div>
-      <div id="pitch">
-        <p class="res-n">Resultado 9</p>
-        <h2>Co-pitch</h2>
-        <div class="pendiente">Presentación del domingo 25 de octubre.</div>
-      </div>
-    </div>
-  </section>
+
 </Base>
 
 <style>
