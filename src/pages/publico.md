@@ -2,25 +2,26 @@
 layout: ../layouts/Resultado.astro
 resultado: 3
 fase: Comprensión
-titulo: Para quién lo hacemos
-entradilla: "Público prioritario: la técnica de Comerç que decide dónde van las ayudas. Público secundario: quien quiere abrir un negocio en Mataró."
+titulo: Para quién lo hacemos?
+entradilla: "Público prioritario: La técnica de Comercio que decide dónde van las ayudas. Público secundario: quien quiere abrir un negocio en Mataró."
 autoria: "[nombre de quien lo redacta]"
 ---
 
-## Mapa de empatía: técnica de Comerç
+## Técnica de Comercio
 
-<div class="pendiente">Aquí va el mapa de empatía (imagen o tabla). Usad las respuestas de la llamada y de las entrevistas a comercios.</div>
+<a href="/imagenes/mapa-empatia2.png" target="_blank">
+  <img src="/imagenes/mapa-empatia2.png" alt="Mapa de empatía" style="display: block; margin: 0 auto; width: 100%; max-width: 1100px;">
+</a>
 
-| | Lo que sabemos |
+| | Consulta abierta con el Ayuntamiento |
 | --- | --- |
-| **Quién es** | Técnica del área de Comerç del Ajuntament de Mataró |
-| **Qué piensa y siente** | [completar] |
-| **Qué ve** | Un censo que se actualiza una vez al año; el GeoVisor como única herramienta para el emprendedor |
-| **Qué oye** | [completar: comerciantes, asociaciones, otras áreas] |
-| **Qué dice y hace** | Atiende a emprendedores, gestiona Aixequem Persianes, recorre la ciudad para el censo |
-| **Esfuerzos y miedos** | [completar] |
-| **Lo que quiere conseguir** | Saber qué zonas tienen potencial y cuáles se están vaciando, y actuar a tiempo |
+| **Qué piensa y siente** | “Queremos una herramienta que nos ayude a hacer políticas públicas.” |
+| **Qué ve** | El geovisor municipal recoge muy pocos establecimientos de restauración (unos 18 bares), en parte porque la ley de comercios separa bar, bar-restaurante y restaurante. |
 
-## Público secundario: quien emprende
+## Quién quiere emprender?
 
-<div class="pendiente">Resumen de las entrevistas a comercios de Aixequem Persianes: por qué abrieron donde abrieron, qué echaron en falta y si nuestra estimación de su barrio les cuadra.</div>
+<a href="/imagenes/mapa-empatia1.png" target="_blank">
+  <img src="/imagenes/mapa-empatia1.png" alt="Mapa de empatía" style="display: block; margin: 0 auto; width: 100%; max-width: 1100px;">
+</a>
+
+

@@ -10,11 +10,13 @@ export const sitio = {
 
 // Páginas de la web, en el orden de la hoja de ruta del TecnoChallenge
 export const paginas = [
+  { href: "/equipo", titulo: "Equipo", resultado: 1 },
   { href: "/reto", titulo: "Reto", resultado: 2 },
   { href: "/publico", titulo: "Público", resultado: 3 },
   { href: "/ideas", titulo: "Ideas", resultado: 4 },
   { href: "/solucion", titulo: "Solución", resultado: "5–7" },
-  { href: "/equipo", titulo: "Equipo", resultado: 1 },
+  { href: "/diseño", titulo: "Diseño", resultado: 6 },
+  { href: "/video", titulo: "Vídeo", resultado: 8 },
   { href: "/ia", titulo: "IA", resultado: 10 },
 ];
 
